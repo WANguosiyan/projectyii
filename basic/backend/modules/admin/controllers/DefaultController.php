@@ -1,13 +1,13 @@
 <?php
 
 namespace app\backend\modules\admin\controllers;
+use app\backend\components\BaseController;
 
-use yii\web\Controller;
 
 /**
  * Default controller for the `admin` module
  */
-class DefaultController extends Controller
+class DefaultController extends BaseController
 {
     /**
      * Renders the index view for the module
