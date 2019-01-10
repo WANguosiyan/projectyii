@@ -1,0 +1,11 @@
+//验证表单
+validate(
+    {
+        'Search[word]':{'required':true},
+        'Search[p_order]':{'required':true,min:1}
+    },
+    {
+        'Search[word]':{'required':'名称不能为空'},
+        'Search[p_order]':{'required':'排序不能为空','min':'排序至少为1'}
+    }
+);

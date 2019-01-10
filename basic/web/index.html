@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>首页</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="header">
+            <img src="./image/logo.png" alt="">
+            <div class="connect_box">
+                <div>
+                    <div>
+                        <img src="./image/dianhua.png" alt="">
+                        <span>15800399892</span>
+                    </div>
+                </div>
+                <div>
+                    <span>预约试听</span>
+                    <span>申请加盟</span>
+                </div>
+            </div>
+        </div>
+        <div class="head_sel_box">
+            <div class="head_sel">
+                <span :class="[{'active':nowpage==1}]" @click="selpahe(1)"> 网站首页</span>
+                <span :class="[{'active':nowpage==2}]" @click="selpahe(2)">课程体系</span>
+                <span :class="[{'active':nowpage==3}]" @click="selpahe(3)">公司简介</span>
+                <span :class="[{'active':nowpage==4}]" @click="selpahe(4)">精彩回顾</span>
+                <span :class="[{'active':nowpage==5}]" @click="selpahe(5)">师资团队</span>
+                <span :class="[{'active':nowpage==6}]" @click="selpahe(6)">品牌方案</span>
+                <span :class="[{'active':nowpage==7}]" @click="selpahe(7)">联系我们</span>
+            </div>
+        </div>
+        <div class="swiper_box">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#"><img src="./image/banner1.png"></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#"><img src="./image/banner2.png"></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#"><img src="./image/banner1.png"></a>
+                    </div>
+                </div>
+                <div class="banner-pagination_box">
+                    <div class="banner-pagination"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="curriculumSystem_box" v-if="nowpage==1||nowpage==2">
+            <div class="curriculumSystem">
+                <div class="title_box">
+                    <div>
+                        <div class="title">
+                            课程体系
+
+                        </div>
+                        <img src="./image/logo_ti.png" alt="">
+                    </div>
+
+                </div>
+
+                <div class="curriculumAney">
+                    <a href="">
+                        <div>
+                            <div>
+                                <img src="./image/kecheng1.png" alt="">
+                            </div>
+                            <span>成长俱乐部</span>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div>
+                            <div>
+                                <img src="./image/kecheng2.png" alt="">
+                            </div>
+                            <span>成长俱乐部</span>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div>
+                            <div>
+                                <img src="./image/kecheng1.png" alt="">
+                            </div>
+                            <span>成长俱乐部</span>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div>
+                            <div>
+                                <img src="./image/kecheng2.png" alt="">
+                            </div>
+                            <span>成长俱乐部</span>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div>
+                            <div>
+                                <img src="./image/kecheng1.png" alt="">
+                            </div>
+                            <span>成长俱乐部</span>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div>
+                            <div>
+                                <img src="./image/kecheng2.png" alt="">
+                            </div>
+                            <span>成长俱乐部</span>
+                        </div>
+                    </a>
+
+
+                </div>
+            </div>
+            <img src="./image/tuzi.png" class="tu tu_bottom" alt="">
+
+        </div>
+        <div class="icon_box" v-if="nowpage==1">
+            <div>
+                <div>
+                    <div>
+                        <img src="./image/icon1.png" alt="">
+                        <h1>沉浸式肢体互动法</h1>
+                        <p>模块化设计，支持功能的灵活 覆盖多种培训场景，满足不同</p>
+                    </div>
+                    <div>
+                        <img src="./image/icon1.png" alt="">
+                        <h1>沉浸式肢体互动法</h1>
+                        <p>模块化设计，支持功能的灵活 覆盖多种培训场景，满足不同</p>
+                    </div>
+                    <div>
+                        <img src="./image/icon1.png" alt="">
+                        <h1>沉浸式肢体互动法</h1>
+                        <p>模块化设计，支持功能的灵活 覆盖多种培训场景，满足不同</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icon_box people_box" v-if="nowpage==1||nowpage==5">
+            <div class="renwu">
+                <div>
+                    <div>
+                        <div>
+                            <img src="./image/renwu1.png" alt="">
+                        </div>
+                        <h1>宋翊彰</h1>
+                        <p>童森教育·戏剧教育老师，擅长主 持、演戏、亲子互动、唱跳、幼 儿体势能等，江苏教育电视台主 持人，参加过麻辣天后宫、康熙 来了</p>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="./image/renwu2.png" alt="">
+                        </div>
+                        <h1>宋翊彰</h1>
+                        <p>童森教育·戏剧教育老师，擅长主 持、演戏、亲子互动、唱跳、幼 儿体势能等，江苏教育电视台主 持人，参加过麻辣天后宫、康熙 来了</p>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="./image/renwu3.png" alt="">
+                        </div>
+                        <h1>宋翊彰</h1>
+                        <p>童森教育·戏剧教育老师，擅长主 持、演戏、亲子互动、唱跳、幼 儿体势能等，江苏教育电视台主 持人，参加过麻辣天后宫、康熙 来了</p>
+                    </div>
+                </div>
+            </div>
+            <div id="get_more">
+                <span @click="selpahe(5)" v-if="nowpage==1">查看更多</span>
+            </div>
+        </div>
+        <div :class="['curriculumSystem_box','back_huigui',{'detail_back_huigui':nowpage==4}]" v-if="nowpage==1||nowpage==4">
+            <div class="curriculumSystem">
+                <div class="title_box">
+                    <div>
+                        <div class="title">
+                            精彩回顾
+                        </div>
+                        <img src="./image/logo_ti.png" alt="">
+                    </div>
+                </div>
+                <div class="action">
+                    <div>
+                        <img src="./image/huodong1.png" alt="">
+                    </div>
+                    <div>
+                        <h1>
+                            活动标题
+                            <i></i>
+                        </h1>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </div>
+                <div class="action">
+
+                    <div>
+                        <h1>
+                            活动标题
+                            <i></i>
+                        </h1>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                    <div>
+                        <img src="./image/huodong3.png" alt="">
+                    </div>
+                </div>
+                <div class="action">
+                    <div>
+                        <img src="./image/huodong3.png" alt="">
+                    </div>
+                    <div>
+                        <h1>
+                            活动标题
+                            <i></i>
+                        </h1>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </div>
+                <div class="action">
+
+                    <div>
+                        <h1>
+                            活动标题
+                            <i></i>
+                        </h1>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                    <div>
+                        <img src="./image/huodong4.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div id="get_more" v-if="nowpage==1">
+                <span @click="selpahe(4)">查看更多</span>
+            </div>
+            <img src="./image/tuzi.png" class="tu tu_top" alt="">
+            <img src="./image/tuzi.png" class="tu tu_bottom" alt="">
+            <div class="detail_back_huigui_bottomImg" v-if="nowpage==4">
+                <img src="./image/iconbg.png" alt="">
+            </div>
+
+        </div>
+        <div class="introduce_commaney" v-if="nowpage==3">
+            <div class="title_box">
+                <div>
+                    <div class="title">
+                        公司简介
+                    </div>
+                    <img src="./image/logo_ti.png" alt="">
+                </div>
+
+            </div>
+            <div class="image_box">
+                <div>
+                    <img src="./image/intro1.png" alt="">
+                </div>
+                <div>
+                    <img src="./image/intro2.png" alt="">
+                </div>
+                <div>
+                    <img src="./image/intro3.png" alt="">
+                </div>
+                <div>
+                    <img src="./image/intro4.png" alt="">
+                </div>
+            </div>
+            <div class="intro_wen">
+                2006年在台湾创建，2007年于台湾拓展多所直营学校，之后陆续与美国硅谷学校、央视大风车、及国内外知名大学
+                (台湾师范大学、台湾逢甲大学、北京师范大学、同济大学、上海戏剧学院等校)合作戏剧教育及戏剧师培训项目。
+
+            </div>
+            <div class="intro_wen">
+                2006年在台湾创建，2007年于台湾拓展多所直营学校，之后陆续与美国硅谷学校、央视大风车、及国内外知名大学
+                (台湾师范大学、台湾逢甲大学、北京师范大学、同济大学、上海戏剧学院等校)合作戏剧教育及戏剧师培训项目。
+
+            </div>
+            <div class="intro_wen">
+                2006年在台湾创建，2007年于台湾拓展多所直营学校，之后陆续与美国硅谷学校、央视大风车、及国内外知名大学
+                (台湾师范大学、台湾逢甲大学、北京师范大学、同济大学、上海戏剧学院等校)合作戏剧教育及戏剧师培训项目。
+
+            </div>
+
+
+        </div>
+        <div class="introduce_commaney" v-if="nowpage==6">
+            <div class="title_box">
+                <div>
+                    <div class="title">
+                        品牌方案
+                    </div>
+                    <img src="./image/logo_ti.png" alt="">
+                </div>
+
+            </div>
+            <div class="image_box">
+                <div class="pinpai_one">
+                    <img src="./image/intro1.png" alt="">
+                </div>
+                <div style="height:100%">
+                    <div class="all_img_box">
+                        <img src="./image/intro2.png" alt="">
+                    </div>
+                    <div class="all_img_box">
+                        <img src="./image/intro3.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+            <div class="intro_wen">
+                <h1>【推荐理由】</h1>
+                2006年在台湾创建，2007年于台湾拓展多所直营学校，之后陆续与美国硅谷学校、央视大风车、及国内外知名大学
+                (台湾师范大学、台湾逢甲大学、北京师范大学、同济大学、上海戏剧学院等校)合作戏剧教育及戏剧师培训项目。
+
+            </div>
+            <div class="intro_wen">
+                <h1>【品牌介绍】</h1>
+                2006年在台湾创建，2007年于台湾拓展多所直营学校，之后陆续与美国硅谷学校、央视大风车、及国内外知名大学
+                (台湾师范大学、台湾逢甲大学、北京师范大学、同济大学、上海戏剧学院等校)合作戏剧教育及戏剧师培训项目。
+
+            </div>
+            <div class="intro_wen">
+                <h1>【教学特色】</h1>
+                2006年在台湾创建，2007年于台湾拓展多所直营学校，之后陆续与美国硅谷学校、央视大风车、及国内外知名大学
+                (台湾师范大学、台湾逢甲大学、北京师范大学、同济大学、上海戏剧学院等校)合作戏剧教育及戏剧师培训项目。
+
+            </div>
+        </div>
+        <div class="connect_me_box" v-if="nowpage==7">
+            <div class="content_box">
+                <div>
+                    <img src="./image/phoneicon.png" alt="">
+                    <div class="name">手机</div>
+                    <div class="contenr">15800399892</div>
+                </div>
+                <div>
+                    <img src="./image/phoneicon.png" alt="">
+                    <div class="name">手机</div>
+                    <div class="contenr">15800399892</div>
+                </div>
+                <div>
+                    <img src="./image/phoneicon.png" alt="">
+                    <div class="name">手机</div>
+                    <div class="contenr">15800399892</div>
+                </div>
+            </div>
+            <div class="img_box">
+                <img src="./image/connect_bg.png" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            <div class="foot_box">
+                <div class="foot_sel">
+                    <div>网站首页</div>
+                    <i></i>
+                    <div>课程体系</div>
+                    <i></i>
+                    <div>公司简介</div>
+                    <i></i>
+                    <div>精彩回顾</div>
+                    <i></i>
+                    <div>师资团队</div>
+                    <i></i>
+                    <div>品牌方案</div>
+                    <i></i>
+                    <div>联系我们</div>
+                </div>
+
+
+            </div>
+            <div class="sing_all">
+                <div>
+                    公司名称：兔森林总部
+                </div>
+                <div>
+                    兰小姐：15800.399892兰小姐(上海店店长)
+                </div>
+                <div>
+                    邮箱： m31139069@163.com
+                </div>
+                <div>
+                    地址：上海市静安区鸿江路1538号1楼
+                </div>
+                <div>
+                    版权所有：&copy;兔森林总部
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/swiper.js"></script>
+    <script src="./js/flexible_css.debug.js"></script>
+    <script src="./js/flexible.debug.js"></script>
+    <script src="./js/vue.min.js"></script>
+    <script>
+        var banner = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: 3000,
+            pagination: '.banner-pagination', //显示焦点按钮
+            paginationClickable: '.banner-pagination', //焦点按钮可点击
+        });
+        var app = new Vue({
+            el: '#app',
+            data: {
+                nowpage: 1,
+                nowpinmuheight:{}
+            },
+            mounted() {
+                this.nowpage=GetQueryString('nowpage')
+
+                if(window.screen.width<590){
+                    $("#app")[0].style.minHeight=window.screen.height-160+'px';
+                }
+           
+         
+            },
+            methods: {
+                selpahe(num) {
+                    window.history.pushState(null, null, '?nowpage=' + num)
+                    this.nowpage = num
+                }
+            }
+        })
+        var banner = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: 3000,
+            pagination: '.banner-pagination', //显示焦点按钮
+            paginationClickable: '.banner-pagination', //焦点按钮可点击
+        });
+        $(window).on('popstate', function () {
+            app.nowpage=GetQueryString('nowpage')
+        });
+
+
+
+    function GetQueryString(name){
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return 1;
+
+}
+
+    </script>
+</body>
+
+</html>

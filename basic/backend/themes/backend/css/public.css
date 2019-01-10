@@ -1,0 +1,6 @@
+body {
+    font-family: "microsoft yahei",sans-serif;
+}
+.multi{overflow-y: scroll; margin-bottom: 33px;}
+.multi-search{margin-left: 15px;}
+.page-quick-sidebar-open .page-quick-sidebar-wrapper{top:46px;}

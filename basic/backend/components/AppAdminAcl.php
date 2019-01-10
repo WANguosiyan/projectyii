@@ -219,43 +219,6 @@ class AppAdminAcl
                 ],
             ]
         ],
-//		[
-//        'name'=>'ceshi管理',
-//        'module'=>'ecs',
-//        'ctl'=>[
-//          [
-//          'name'=>'ceshi管理',
-//          'icon'=>'icon-wallet',
-//          'list_ctl'=>['default','table','group','api'],
-//            'act'=>[
-//              // 'default'=>[
-//              //   'name'=>'ceshi列表',
-//              //   'sidebar'=>true,
-//              //  'default_id'=>'index',
-//              //  'list_act'=>['index'=>'ceshi列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
-//              //   ],
-//                'table'=>[
-//                    'name'=>'数据库列表',
-//                    'sidebar'=>true,
-//                    'default_id'=>'index&module_id=ecs',
-//                    'list_act'=>['index'=>'数据库列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
-//                ],
-//                'group'=>[
-//                    'name'=>'api分组列表',
-//                    'sidebar'=>true,
-//                    'default_id'=>'index&module_id=ecs',
-//                    'list_act'=>['index'=>'api分组列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
-//                ],
-//                'config'=>[
-//                    'name'=>'配置管理',
-//                    'sidebar'=>true,
-//                    'default_id'=>'index',
-//                    'list_act'=>['index'=>'配置管理']
-//                ],
-//              ],
-//            ],
-//          ],
-//        ],
         [
             'name'=>'电商管理',
             'module'=>'cloud_shop',
@@ -377,6 +340,7 @@ class AppAdminAcl
     {
         $item = self::$aclList;
         if ($super == 1) return $item;
+        return $item;//gsy增加
         foreach ($item as $k=>$v) {
             foreach ($v['ctl'] as $kk=>$vv) {
                 foreach ($vv['act'] as $kkk=>$vvv) {
