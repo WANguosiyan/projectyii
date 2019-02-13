@@ -51,7 +51,6 @@ class TAdmin extends \yii\db\ActiveRecord
             'password' => 'Password',
             'create_time' => 'Create Time',
             'login_ip' => 'Login Ip',
-            'login_count' => 'Login Count',
             'update_time' => 'Update Time',
             'disabled' => 'Disabled',
         ];

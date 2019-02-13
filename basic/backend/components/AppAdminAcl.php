@@ -11,88 +11,9 @@ class AppAdminAcl
 //权限配制数据
     public static $aclList = [
 
-        [
-            'name'=>'模块管理',
-            'module'=>'module',
-            'ctl'=>[
-                [
-                    'name'=>'模块管理',
-                    'icon'=>'icon-wallet',
-                    'list_ctl'=>['default','adminacl','admin','config'],
-                    'act'=>[
-                        'default'=>[
-                            'name'=>'模块列表',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'模块列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
-                        ],
-                        'adminacl'=>[
-                            'name'=>'导航栏管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'导航栏管理']
-                        ],
-                        'cloud-conf'=>[
-                            'name'=>'配置列表管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'配置列表管理']
-                        ],
-                        'admin'=>[
-                            'name'=>'模块配置文件管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'模块配置文件管理']
-                        ],
-                    ],
-                ],
-            ]
-        ],
-        [
-            'name'=>'socket用户管理',
-            'module'=>'chindorim',
-            'ctl'=>[
-                [
-                    'name'=>'socket用户管理',
-                    'icon'=>'icon-wallet',
-                    'list_ctl'=>['default'],
-                    'act'=>[
-                        'default'=>[
-                            'name'=>'socket用户列表',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'列表']
-                        ],
-                    ],
-                ],
-            ]
-        ],
-              [
-            'name'=>'用户中心',
-            'module'=>'usercenter',
-            'ctl'=>[
-                [
-                    'name'=>'用户中心',
-                    'icon'=>'icon-wallet',
-                    'list_ctl'=>['userlist','table','group','api','config'],
-                    'act'=>[
-                        'default'=>[
-                            'name'=>'   会员列表',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'会员列表','create'=>'新增会员','update'=>'编辑会员','delete'=>'删除会员']
-                        ],
-                        'type'=>[
-                            'name'=>'   会员类型',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'会员列表','create'=>'新增会员','update'=>'编辑会员','delete'=>'删除会员']
-                        ],
-                      
-                    ],
-                ],
-            ]
-        ],
+
+
+
                [
             'name'=>'商家中心',
             'module'=>'businesscenter',

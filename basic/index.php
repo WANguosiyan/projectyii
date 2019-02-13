@@ -8,6 +8,6 @@ require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
 
 //判断加载的项目（web、wap、api、web）
 if (strpos($_SERVER['PHP_SELF'], '/wap/') !== false)
-    header('Location:/wap');
+    header('Location:/backend');
 else
-    header('Location:/web');
+    header('Location:/backend');
