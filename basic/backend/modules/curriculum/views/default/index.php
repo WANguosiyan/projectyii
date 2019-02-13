@@ -2,12 +2,12 @@
 use app\backend\widgets\LinkPager;
 use app\backend\components\AppAdminAcl;
 use app\backend\modules\txt\models\TwNewsList;
-$this->title = '轮播图管理';
-$this->params['breadcrumbs'] = [['label'=>'轮播图管理','url'=>'?r=banner/default/index'],['label'=>'轮播图列表']];
+$this->title = '课程体系';
+$this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curriculum/default/index'],['label'=>'列表']];
 ?>
-<h3 class="page-title"> 轮播图列表
+<h3 class="page-title">课程体系列表
     <small>
-            <a href="?r=banner/default/index" class="btn btn-sm default"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+            <a href="?r=curriculum/default/index" class="btn btn-sm default"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
     </small>
 </h3>
 <div class="row">

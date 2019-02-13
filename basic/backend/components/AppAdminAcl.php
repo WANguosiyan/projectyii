@@ -12,51 +12,38 @@ class AppAdminAcl
     public static $aclList = [
 
         [
-            'name'=>'商家中心',
-            'module'=>'businesscenter',
+            'name'=>'企业信息',
+            'module'=>'enterprise',
             'ctl'=>[
                 [
-                    'name'=>'商家中心',
+                    'name'=>'企业信息',
                     'icon'=>'icon-wallet',
-                    'list_ctl'=>['table','group','api','config','default','type'],
+                    'list_ctl'=>['default'],
                     'act'=>[
                         'default'=>[
-                            'name'=>'   商家列表',
+                            'name'=>'   企业信息',
                             'sidebar'=>true,
                             'default_id'=>'index',
                             'list_act'=>['index'=>'商家列表','create'=>'新增商家','update'=>'编辑商家','delete'=>'删除商家']
                         ],
-                        'type'=>[
-                            'name'=>'   商家类型',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'类型列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
-                        ],
-                      
                     ],
                 ],
             ]
         ], 
         [
-            'name'=>'图文管理',
-            'module'=>'txt',
+            'name'=>'课程体系',
+            'module'=>'curriculum',
             'ctl'=>[
                 [
-                    'name'=>'图文管理',
+                    'name'=>'课程体系',
                     'icon'=>'icon-wallet',
-                    'list_ctl'=>['newslist','newscat','table','group','api','config'],
+                    'list_ctl'=>['default'],
                     'act'=>[
-                        'newslist'=>[
-                            'name'=>'   图文列表',
+                        'default'=>[
+                            'name'=>'   课程体系列表',
                             'sidebar'=>true,
                             'default_id'=>'index',
-                            'list_act'=>['index'=>'图文列表','create'=>'新增图文','update'=>'编辑图文','delete'=>'删除图文']
-                        ],
-                        'newscat'=>[
-                            'name'=>'   图文类型库',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'图文类型列表','create'=>'新增图文类型','update'=>'编辑图文类型','delete'=>'删除图文类型']
+                            'list_act'=>['index'=>'课程体系列表','create'=>'新增课程体系','update'=>'编辑课程体系','delete'=>'删除']
                         ],
                     ],
                 ],

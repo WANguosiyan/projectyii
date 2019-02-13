@@ -61,6 +61,12 @@ $config = [
         'banner' => [
             'class' => 'app\backend\modules\banner\banner',
         ],
+        'enterprise' => [
+            'class' => 'app\backend\modules\enterprise\module',
+        ],
+        'curriculum' => [
+            'class' => 'app\backend\modules\curriculum\curriculum',
+        ],
     ],
 ];
 
