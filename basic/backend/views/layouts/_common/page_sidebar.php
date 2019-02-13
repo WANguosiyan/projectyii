@@ -12,7 +12,6 @@ use app\backend\components\ZhuzaiAdminAcl;
             <div class="sidebar-toggler"> </div>
             <!-- END SIDEBAR TOGGLER BUTTON -->
         </li>
-        <?php if(!Yii::$app->session['business_member_id']):?>
         <li class="nav-item start <?php if($this->context->module->id == 'admin' && $this->context->id == 'default'):?>active open<?php endif;?>">
             <a class="nav-link nav-toggle" href="javascript:;">
                 <i class="icon-home"></i>
@@ -22,7 +21,7 @@ use app\backend\components\ZhuzaiAdminAcl;
             </a>
             <ul class="sub-menu">
                 <li class="nav-item start <?php if($this->context->module->id == 'admin' && $this->context->id == 'default'):?>active open<?php endif;?>">
-                    <a class="nav-link " href="?r=admin/default/index">
+                    <a class="nav-link " href="?r=admin/admin/index">
                         <i class="icon-bar-chart"></i>
                         <span class="title">业务概览</span>
                         <span class="selected"></span>
@@ -30,7 +29,6 @@ use app\backend\components\ZhuzaiAdminAcl;
                 </li>
             </ul>
         </li>
-        <?php endif;?>
         <?php foreach (AppAdminAcl::filterMenu(Yii::$app->session['acl'], Yii::$app->session['super']) as $k=>$v):?>
             <li class="heading">
                 <h3 class="uppercase"><?php echo $v['name'];?></h3>

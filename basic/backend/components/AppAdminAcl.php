@@ -11,10 +11,7 @@ class AppAdminAcl
 //权限配制数据
     public static $aclList = [
 
-
-
-
-               [
+        [
             'name'=>'商家中心',
             'module'=>'businesscenter',
             'ctl'=>[
@@ -66,25 +63,19 @@ class AppAdminAcl
             ]
         ],
         [
-                'name'=>'轮播图管理管理',
+                'name'=>'轮播图管理',
                 'module'=>'banner',
                 'ctl'=>[
                   [
-                      'name'=>'轮播图管理管理',
+                      'name'=>'轮播图管理',
                       'icon'=>'icon-wallet',
-                      'list_ctl'=>['default','table','group','api','config','bannermanage'],
+                      'list_ctl'=>['default'],
                         'act'=>[ 
-                                'bannermanage'=>[
+                                'default'=>[
                                     'name'=>'   轮播图列表',
                                     'sidebar'=>true,
                                     'default_id'=>'index',
-                                    'list_act'=>['index'=>'会员列表','create'=>'新增会员','update'=>'编辑会员','delete'=>'删除会员']
-                                ],
-                                'bannertype'=>[
-                                    'name'=>'   轮播图分类',
-                                    'sidebar'=>true,
-                                    'default_id'=>'index',
-                                    'list_act'=>['index'=>'分类列表','create'=>'新增分类','update'=>'编辑分类','delete'=>'删除分类']
+                                    'list_act'=>['index'=>'轮播图列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
                                 ],
                           ],
                     ],
@@ -213,38 +204,6 @@ class AppAdminAcl
                             'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
                         ],
                     ],
-                ],
-            ]
-        ],
-        [
-            'name'=>'系统',
-            'module'=>'desktop',
-            'ctl'=>[
-                [
-                    'name'=>'管理员和权限',
-                    'icon'=>'icon-settings',
-                    'module'=>'admin',
-                    'list_ctl'=>['role','admin','seo'],
-                    'act'=>[
-                        'role'=>[
-                            'name'=>'角色管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'角色列表','create'=>'角色创建','update'=>'角色编辑','cancel'=>'角色冻结']
-                        ],
-                        'admin'=>[
-                            'name'=>'操作员管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'操作员列表','create'=>'操作员创建','update'=>'操作员编辑','cancel'=>'操作员冻结']
-                        ],
-                        'seo' => [
-                            'name'      => 'SEO关键词管理',
-                            'sidebar'   => true,
-                            'default_id'=> 'index',
-                            'list_act'  => ['index'=>'角色列表','create'=>'角色创建','update'=>'角色编辑','cancel'=>'角色冻结']
-                        ]
-                    ]
                 ],
             ]
         ],

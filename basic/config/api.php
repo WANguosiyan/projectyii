@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' => 'admin/default/login',
+    'defaultRoute' => 'site/default/login',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -24,9 +24,9 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
-        'errorHandler' => [
-            'errorAction' => 'admin/error/index',
-        ],
+//        'errorHandler' => [
+//            'errorAction' => 'site/error/index',
+//        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             //send all mails to a file by default. You have to set
@@ -55,30 +55,10 @@ $config = [
     ],
     'params' => $params,
     'modules' => [
-        'admin' => [
-            'class' => 'app\backend\modules\admin\admin',
-        ],
-        'banner' => [
-            'class' => 'app\backend\modules\banner\banner',
+        'v1' => [
+            'class' => 'app\api\modules\v1\Module',
         ],
     ],
 ];
-
-if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
-    $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
-
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
-}
 
 return $config;

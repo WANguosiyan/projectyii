@@ -1,3 +1,3 @@
 <div class="admin-default-index">
-   <p>111</p>
+   <p></p>
 </div>

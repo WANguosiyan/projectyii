@@ -19,13 +19,13 @@
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <img alt="" class="img-circle" src="<?php echo \yii\helpers\Url::to('@web/themes/backend/images/user-pic.png');?>" />
-                        <span class="username username-hide-on-mobile"> <?php echo Yii::$app->session['login_account'];?> </span>
+                        <span class="username username-hide-on-mobile"> <?php echo Yii::$app->session['name'];?> </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
 
                         <li>
-                            <a href="?r=admin/user/logout">
+                            <a href="?r=admin/default/logout">
                                 <i class="icon-key"></i> 退出 </a>
                         </li>
                     </ul>
