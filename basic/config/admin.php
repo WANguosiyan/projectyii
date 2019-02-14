@@ -70,6 +70,9 @@ $config = [
         'teacherteam' => [
             'class' => 'app\backend\modules\teacherteam\module',
         ],
+        'brandplan' => [
+            'class' => 'app\backend\modules\brandplan\module',
+        ],
     ],
 ];
 
