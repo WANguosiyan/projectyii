@@ -64,6 +64,36 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group ">
+                            <label class="control-label col-md-3">
+                                企业二维码
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                         style="width: 360px; height: 180px;">
+                                        <?php if (isset($row['qr_code']) && $row['qr_code']): ?>
+                                            <img src="<?php echo $row['qr_code']; ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div>
+                                    <span class="btn red btn-outline btn-file">
+                                        <span class="fileinput-new"> 选择图片 </span>
+                                        <span class="fileinput-exists"> 重选图片 </span>
+                                        <input type="file" name="Enterprise[qr_code]"> </span>
+                                        <input type="hidden" name="Enterprise[qr_code]" value="<?php echo isset($row['qr_code']) ? $row['qr_code'] : ''; ?>">
+                                        </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists"
+                                           data-dismiss="fileinput"> 删除 </a>
+                                    </div>
+                                </div>
+                                <div class="clearfix margin-top-10">
+                                    <span class="label label-success">警告!</span> 图片预览仅仅支持 IE10+,
+                                    FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+. 在较老的浏览器中只显示文件名.
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">企业邮箱
                                 <span class="required"> * </span>
@@ -114,6 +144,7 @@
                                         type="text/plain"><?php echo isset($row['abstract']) ? $row['abstract'] : ''; ?></script>
                             </div>
                         </div>
+
 
                     </div>
 

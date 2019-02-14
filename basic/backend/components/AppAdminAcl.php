@@ -88,19 +88,19 @@ class AppAdminAcl
             ],
         ],
         [
-            'name'=>'文件管理',
-            'module'=>'file',
+            'name'=>'品牌方案',
+            'module'=>'brandplan',
             'ctl'=>[
                 [
-                    'name'=>'文件管理',
+                    'name'=>'品牌方案',
                     'icon'=>'icon-wallet',
                     'list_ctl'=>['default'],
                     'act'=>[
                         'default'=>[
-                            'name'=>'文件列表',
+                            'name'=>'品牌方案列表',
                             'sidebar'=>true,
                             'default_id'=>'index',
-                            'list_act'=>['index'=>'文件列表','create'=>'新增文件','update'=>'编辑文件','delete'=>'删除文件']
+                            'list_act'=>['index'=>'列表','create'=>'新增文件','update'=>'编辑文件','delete'=>'删除文件']
                         ],
                     ],
                 ],

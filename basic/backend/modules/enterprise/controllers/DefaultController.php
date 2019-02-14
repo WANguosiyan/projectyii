@@ -47,6 +47,9 @@ class DefaultController extends BaseController
             if (isset($post['logo']) && $post['logo']!=$model->logo){//图片上传
                 $post['logo'] = Common::common($post['logo'], 'logo');
             }
+            if (isset($post['qr_code']) && $post['qr_code']!=$model->qr_code){//图片上传
+                $post['qr_code'] = Common::common($post['qr_code'], 'qrcode');
+            }
             $post['update_time'] = time();
             $model->attributes = $post;
             $submit = $model->save()?200:500;
