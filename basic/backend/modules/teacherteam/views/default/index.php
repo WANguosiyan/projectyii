@@ -111,11 +111,11 @@ $this->params['breadcrumbs'] = [['label'=>'师资团队管理','url'=>'?r=teache
             });
 
             if (banners_id == '') {
-                bootbox.alert('没有选中的轮播图');
+                bootbox.alert('没有选中的师资团队');
                 return false;
             }
 
-            bootbox.confirm("是否确定删除选中的轮播图！", function(result) {
+            bootbox.confirm("是否确定删除选中的师资团队！", function(result) {
                 if (result == true) {
                     var csrf = $('.request-csrf').val();
                     $.post(

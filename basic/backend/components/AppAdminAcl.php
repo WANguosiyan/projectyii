@@ -107,76 +107,19 @@ class AppAdminAcl
             ]
         ],
         [
-            'name'=>'电商管理',
-            'module'=>'cloud_shop',
+            'name'=>'精彩回顾',
+            'module'=>'review',
             'ctl'=>[
                 [
-                    'name'=>'电商管理',
+                    'name'=>'精彩回顾',
                     'icon'=>'icon-wallet',
-                    'list_ctl'=>['table','group','api','config','default','setting','order-default','promotioncoupon','cat','parentcat','collage-default'],
+                    'list_ctl'=>['default'],
                     'act'=>[
-                        'collage-default'=>[
-                            'name'=>'   团购列表',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'团购列表', 'create'=>'新增','update'=>'编辑','delete'=>'删除']
-                        ],
-                        'collage-conf'=>[
-                            'name'=>'   团购配置',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'团购配置']
-                        ],
                         'default'=>[
-                            'name'=>'   商品列表',
+                            'name'=>'   回顾列表',
                             'sidebar'=>true,
                             'default_id'=>'index',
-                            'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
-                        ],
-                        'setting'=>[
-                            'name'=>'   参数配置',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
-                        ],
-                        'fregiht'=>[
-                            'name'=>'   运费配置',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'运费配置列表', 'detail'=>'运费详情']
-                        ],
-                        'order-default'=>[
-                            'name'=>'   普通订单管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
-                        ],
-
-                        'collage-order'=>[
-                            'name'=>'   自提订单管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
-                        ],
-
-                        'promotioncoupon'=>[
-                            'name'=>'   促销管理',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
-                        ],
-                        'parentcat'=>[
-                            'name'=>'   一级分类',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
-                        ],
-
-                        'cat'=>[
-                            'name'=>'   二级分类',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'订单列表', 'detail'=>'订单详情']
+                            'list_act'=>['index'=>'回顾列表', 'create'=>'新增','update'=>'编辑','delete'=>'删除']
                         ],
                     ],
                 ],

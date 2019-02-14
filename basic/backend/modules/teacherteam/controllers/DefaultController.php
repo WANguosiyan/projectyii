@@ -68,6 +68,28 @@ class DefaultController extends BaseController
         $this->data['action'] = 'create';
         return $this->render('create', $this->data);
     }
+    /**
+     * 编辑
+     */
+    public function actionUpdate(){
+        $id = Yii::$app->request->get('id');
+        $attribute = Yii::$app->request->post('Teacherteam');
+        if($attribute){
+            $model = TTeacherteam::findOne($id);
+            if (isset($attribute['cover_img']) && $attribute['cover_img']!=$model->cover_img){//图片上传
+                $attribute['cover_img'] = Common::common($attribute['cover_img'], 'coverimg');
+            }
+            $model->update_time = time();
+            $model->name = $attribute['name'];
+            $model->cover_img = $attribute['cover_img'];
+            $model->sort = $attribute['sort'];
+            $submit = $model->save()?200:500;
+            $this->refresh('&ref_sub='.$submit);
+        }
+        $this->data['row'] = TTeacherteam::findOne($id);
+        $this->data['action'] = 'update&id='.$id;
+        return $this->render('create',$this->data);
+    }
         /**
          * 删除
          */

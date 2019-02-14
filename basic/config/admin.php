@@ -73,6 +73,9 @@ $config = [
         'brandplan' => [
             'class' => 'app\backend\modules\brandplan\module',
         ],
+        'review' => [
+            'class' => 'app\backend\modules\review\module',
+        ],
     ],
 ];
 
