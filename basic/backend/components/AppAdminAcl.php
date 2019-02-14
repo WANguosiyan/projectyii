@@ -69,31 +69,19 @@ class AppAdminAcl
                   ]
         ],
         [
-            'name'=>'产品管理',
-            'module'=>'product',
+            'name'=>'师资团队',
+            'module'=>'teacherteam',
             'ctl'=>[
                 [
-                    'name'=>'产品管理',
+                    'name'=>'师资团队',
                     'icon'=>'icon-wallet',
-                    'list_ctl'=>['default','producttype','productspec','table','group','api','config'],
+                    'list_ctl'=>['default'],
                     'act'=>[
                         'default'=>[
-                            'name'=>'   产品列表',
+                            'name'=>'   师资团队列表',
                             'sidebar'=>true,
                             'default_id'=>'index',
-                            'list_act'=>['index'=>'产品列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
-                        ],
-                        'producttype'=>[
-                            'name'=>'   产品分类',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'产品分类列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
-                        ],
-                        'productspec'=>[
-                            'name'=>'   产品类属性规格',
-                            'sidebar'=>true,
-                            'default_id'=>'index',
-                            'list_act'=>['index'=>'产品类属性规格列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
+                            'list_act'=>['index'=>'列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
                         ],
                     ],
                 ],

@@ -67,6 +67,9 @@ $config = [
         'curriculum' => [
             'class' => 'app\backend\modules\curriculum\curriculum',
         ],
+        'teacherteam' => [
+            'class' => 'app\backend\modules\teacherteam\module',
+        ],
     ],
 ];
 
