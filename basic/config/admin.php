@@ -76,6 +76,9 @@ $config = [
         'review' => [
             'class' => 'app\backend\modules\review\module',
         ],
+        'administrators' => [
+            'class' => 'app\backend\modules\administrators\module',
+        ],
     ],
 ];
 

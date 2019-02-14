@@ -10,7 +10,25 @@ class AppAdminAcl
 {
 //权限配制数据
     public static $aclList = [
-
+        [
+            'name'=>'管理员',
+            'module'=>'administrators',
+            'ctl'=>[
+                [
+                    'name'=>'管理员',
+                    'icon'=>'icon-wallet',
+                    'list_ctl'=>['default'],
+                    'act'=>[
+                        'default'=>[
+                            'name'=>'   管理员列表',
+                            'sidebar'=>true,
+                            'default_id'=>'index',
+                            'list_act'=>['index'=>'列表','create'=>'新增','update'=>'编辑','delete'=>'删除']
+                        ],
+                    ],
+                ],
+            ]
+        ],
         [
             'name'=>'企业信息',
             'module'=>'enterprise',
