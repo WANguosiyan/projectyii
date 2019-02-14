@@ -2,12 +2,12 @@
 use app\backend\widgets\LinkPager;
 use app\backend\components\AppAdminAcl;
 use app\backend\modules\txt\models\TwNewsList;
-$this->title = '课程体系';
-$this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curriculum/default/index'],['label'=>'列表']];
+$this->title = '师资团队';
+$this->params['breadcrumbs'] = [['label'=>'师资团队管理','url'=>'?r=teacherteam/default/index'],['label'=>'列表']];
 ?>
-<h3 class="page-title">课程体系列表
+<h3 class="page-title"> 师资团队列表
     <small>
-        <a href="?r=curriculum/default/index" class="btn btn-sm default"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
+            <a href="?r=teacherteam/default/index" class="btn btn-sm default"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
     </small>
 </h3>
 <div class="row">
@@ -18,13 +18,13 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                     <div class="row">
                         <div class="col-md-6">
                             <div class="btn-group">
-                                <?php echo AppAdminAcl::filterButton('curriculum/default/create',
-                                    '<a href="?r=curriculum/default/create" class="btn sbold green"> 添加<i class="fa fa-plus"></i></a>');
-                                ?>
+                                    <?php echo AppAdminAcl::filterButton('teacherteam/default/create',
+                                        '<a href="?r=teacherteam/default/create" class="btn sbold green"> 添加<i class="fa fa-plus"></i></a>');
+                                    ?>
                             </div>
                             <div class="btn-group">
-                                <?php echo AppAdminAcl::filterButton('banner/default/batch-del',
-                                    '<a data-href="?r=banner/default/batch-del" class="btn sbold btn-danger batch-del"> 批量删除</a>');
+                                <?php echo AppAdminAcl::filterButton('teacherteam/default/batch-del',
+                                    '<a data-href="?r=teacherteam/default/batch-del" class="btn sbold btn-danger batch-del"> 批量删除</a>');
                                 ?>
                             </div>
 
@@ -53,39 +53,39 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                         </thead>
                         <tbody>
                         <?php if(isset($dataProvider)):?>
-                            <?php foreach ($dataProvider as $v):?>
+                        <?php foreach ($dataProvider as $v):?>
 
-                                <tr class="odd gradeX now-cat-<?php echo $v['id'];?>">
-                                    <td>
-                                        <input type="checkbox" class="checkboxes" value="<?php echo $v['id'];?>" />
-                                    </td>
-                                    <td>
-                                        <?php echo AppAdminAcl::filterButton('curriculum/default/update', '<a href="?r=curriculum/default/update&id='.$v['id'].'" type="button" class="btn btn-sm btn-info">编辑</a>');?>
-                                        <?php echo AppAdminAcl::filterButton('curriculum/default/delete', '<a data-href="?r=curriculum/default/delete" data-id="'.$v['id'].'" type="button" class="btn btn-sm btn-danger delete">删除</a>');?>
-                                        <input type="hidden" name="id" id="id" value="<?php echo $v['id'];?>">
-                                    </td>
-                                    <td><?= $v['id'];?></td>
-                                    <td>
-                                        <?php echo $v['name'];?>
-                                    </td>
-                                    <td>
-                                        <?php if($v['cover_img']){?>
-                                            <img style="width: 60px;height: 50px;" src="<?php echo $v['cover_img'];?>">
-                                        <?php }?>
+                            <tr class="odd gradeX now-cat-<?php echo $v['id'];?>">
+                                <td>
+                                    <input type="checkbox" class="checkboxes" value="<?php echo $v['id'];?>" />
+                                </td>
+                                <td>
+                                    <?php echo AppAdminAcl::filterButton('teacherteam/default/update', '<a href="?r=teacherteam/default/update&id='.$v['id'].'" type="button" class="btn btn-sm btn-info">编辑</a>');?>
+                                    <?php echo AppAdminAcl::filterButton('teacherteam/default/delete', '<a data-href="?r=teacherteam/default/delete" data-id="'.$v['id'].'" type="button" class="btn btn-sm btn-danger delete">删除</a>');?>
+                                    <input type="hidden" name="id" id="id" value="<?php echo $v['id'];?>">
+                                </td>
+                                <td><?= $v['id'];?></td>
+                                <td>
+                                    <?php echo $v['name'];?>
+                                </td>
+                                <td>
+                                    <?php if($v['cover_img']){?>
+                                        <img style="width: 60px;height: 50px;" src="<?php echo $v['cover_img'];?>">
+                                    <?php }?>
 
 
-                                    </td>
-                                    <td>
-                                        <?php echo isset($v['create_time'])?date("Y-m-d H:i:s",$v['create_time']):'';?>
-                                    </td>
-                                    <td>
-                                        <?php echo isset($v['update_time'])?date("Y-m-d H:i:s",$v['update_time']):'';?>
-                                    </td>
-                                    <td>
-                                        <?php echo $v['sort'];?>
-                                    </td>
-                                </tr>
-                            <?php endforeach;?>
+                                </td>
+                                <td>
+                                    <?php echo isset($v['create_time'])?date("Y-m-d H:i:s",$v['create_time']):'';?>
+                                </td>
+                                <td>
+                                    <?php echo isset($v['update_time'])?date("Y-m-d H:i:s",$v['update_time']):'';?>
+                                </td>
+                                <td>
+                                    <?php echo $v['sort'];?>
+                                </td>
+                            </tr>
+                        <?php endforeach;?>
                         <?php endif;?>
                         </tbody>
                     </table>
@@ -111,15 +111,15 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
             });
 
             if (banners_id == '') {
-                bootbox.alert('没有选中的课程体系');
+                bootbox.alert('没有选中的轮播图');
                 return false;
             }
 
-            bootbox.confirm("是否确定删除选中的课程体系！", function(result) {
+            bootbox.confirm("是否确定删除选中的轮播图！", function(result) {
                 if (result == true) {
                     var csrf = $('.request-csrf').val();
                     $.post(
-                        '?r=curriculum/default/batch-del',
+                        '?r=teacherteam/default/batch-del',
                         {'banners_id':banners_id, '_csrf': csrf},
                         function (res) {
                             if (res == 500) bootbox.alert(res.msg);
