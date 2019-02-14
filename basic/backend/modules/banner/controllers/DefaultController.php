@@ -118,7 +118,7 @@ class DefaultController extends BaseController
         $banners_id = explode(',',$banners_id);
         if (!$banners_id) return Json::encode(['code'=>500, 'msg'=>'没有获取请求的ID']);
         foreach($banners_id as $v){
-            $model = Banner::findOne($v)->delete();
+            $model = TBanner::findOne($v)->delete();
         }
         return Json::encode(['code'=>200]);
     }

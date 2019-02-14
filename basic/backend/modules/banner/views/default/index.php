@@ -96,11 +96,11 @@ $this->params['breadcrumbs'] = [['label'=>'轮播图管理','url'=>'?r=banner/de
                 </div>
             </div>
             <div>
-<!--                --><?php
-//                echo \app\backend\widgets\LinkPager::widget([
-//                    'pagination' => $pages,
-//                ]);
-//                ?>
+                <?php
+                echo \app\backend\widgets\LinkPager::widget([
+                    'pagination' => $pages,
+                ]);
+                ?>
             </div>
         </div>
     </div>
@@ -141,7 +141,7 @@ $this->params['breadcrumbs'] = [['label'=>'轮播图管理','url'=>'?r=banner/de
                 if (result == true) {
                     var csrf = $('.request-csrf').val();
                     $.post(
-                        '?r=banner/bannermanage/batch-del',
+                        '?r=banner/default/batch-del',
                         {'banners_id':banners_id, '_csrf': csrf},
                         function (res) {
                             if (res == 500) bootbox.alert(res.msg);

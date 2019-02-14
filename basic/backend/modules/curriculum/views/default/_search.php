@@ -1,13 +1,13 @@
 <!--基础搜索表单开始-->
 <form action="" method="get" class="search-single">
-    <input type="hidden" name="r" value="banner/default/index">
+    <input type="hidden" name="r" value="curriculum/default/index">
     <select class="bs-select form-control input-small" name="Single[name]" data-style="btn-success">
         <option value="id"
                 <?php if (isset($search_attributes['Single']['name'])&&$search_attributes['Single']['name']=='id'):?>selected<?php endif;?>
         >编号</option>
         <option value="name"
                 <?php if (isset($search_attributes['Single']['name'])&&$search_attributes['Single']['name']=='name'):?>selected<?php endif;?>
-        >轮播名称</option>
+        >体系名称</option>
     </select>
     <input type="text" class="form-control input-inline" placeholder=""
            value="<?php echo isset($search_attributes['Single']['search_val'])&&$search_attributes['Single']['search_val']?$search_attributes['Single']['search_val']:'';?>" name="Single[search_val]">

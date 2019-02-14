@@ -18,8 +18,8 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                     <div class="row">
                         <div class="col-md-6">
                             <div class="btn-group">
-                                    <?php echo AppAdminAcl::filterButton('banner/default/create',
-                                        '<a href="?r=banner/default/create" class="btn sbold green"> 添加<i class="fa fa-plus"></i></a>');
+                                    <?php echo AppAdminAcl::filterButton('curriculum/default/create',
+                                        '<a href="?r=curriculum/default/create" class="btn sbold green"> 添加<i class="fa fa-plus"></i></a>');
                                     ?>
                             </div>
                             <div class="btn-group">
@@ -45,10 +45,9 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                             <th width="250"> 操作 </th>
                             <th>ID</th>
                             <th> 名称 </th>
-                            <th> 图片 </th>
+                            <th> 封面图 </th>
                             <th> 创建时间 </th>
                             <th> 更新时间 </th>
-                            <th> 链接 </th>
                             <th> 排序 </th>
                         </tr>
                         </thead>
@@ -61,8 +60,8 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                                     <input type="checkbox" class="checkboxes" value="<?php echo $v['id'];?>" />
                                 </td>
                                 <td>
-                                    <?php echo AppAdminAcl::filterButton('banner/default/update', '<a href="?r=banner/default/update&id='.$v['id'].'" type="button" class="btn btn-sm btn-info">编辑</a>');?>
-                                    <?php echo AppAdminAcl::filterButton('banner/default/delete', '<a data-href="?r=banner/default/delete" data-id="'.$v['id'].'" type="button" class="btn btn-sm btn-danger delete-banner">删除</a>');?>
+                                    <?php echo AppAdminAcl::filterButton('curriculum/default/update', '<a href="?r=curriculum/default/update&id='.$v['id'].'" type="button" class="btn btn-sm btn-info">编辑</a>');?>
+                                    <?php echo AppAdminAcl::filterButton('curriculum/default/delete', '<a data-href="?r=curriculum/default/delete" data-id="'.$v['id'].'" type="button" class="btn btn-sm btn-danger delete">删除</a>');?>
                                     <input type="hidden" name="id" id="id" value="<?php echo $v['id'];?>">
                                 </td>
                                 <td><?= $v['id'];?></td>
@@ -70,8 +69,8 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                                     <?php echo $v['name'];?>
                                 </td>
                                 <td>
-                                    <?php if($v['img_url']){?>
-                                        <img style="width: 60px;height: 50px;" src="<?php echo $v['img_url'];?>">
+                                    <?php if($v['cover_img']){?>
+                                        <img style="width: 60px;height: 50px;" src="<?php echo $v['cover_img'];?>">
                                     <?php }?>
 
 
@@ -81,9 +80,6 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                                 </td>
                                 <td>
                                     <?php echo isset($v['update_time'])?date("Y-m-d H:i:s",$v['update_time']):'';?>
-                                </td>
-                                <td>
-                                    <?php echo $v['link_url'];?>
                                 </td>
                                 <td>
                                     <?php echo $v['sort'];?>
@@ -96,35 +92,17 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
                 </div>
             </div>
             <div>
-<!--                --><?php
-//                echo \app\backend\widgets\LinkPager::widget([
-//                    'pagination' => $pages,
-//                ]);
-//                ?>
+                <?php
+                echo \app\backend\widgets\LinkPager::widget([
+                    'pagination' => $pages,
+                ]);
+                ?>
             </div>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     window.onload = function(){
-        //删除功能
-        $('.delete-banner').click(function(){
-            var data_href = $(this).attr('data-href');
-            var id = $(this).attr('data-id');
-            console.log(data_href);
-            console.log(id);
-            bootbox.confirm("是否确定删除", function(result) {
-                    if(result == true){
-                        $.get(data_href, {'id': id}, function (res) {
-                                App.unblockUI('.page-container');
-                                if (res.code == 500) {
-                                    bootbox.alert(res.msg);
-                                } else location.reload();
-                            }, 'json');
-                    }
-
-                })
-            });
         //批量删除能
         $('.batch-del').on('click', function(){
             var banners_id = '';
@@ -133,15 +111,15 @@ $this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curric
             });
 
             if (banners_id == '') {
-                bootbox.alert('没有选中的轮播图');
+                bootbox.alert('没有选中的课程体系');
                 return false;
             }
 
-            bootbox.confirm("是否确定删除选中的轮播图！", function(result) {
+            bootbox.confirm("是否确定删除选中的课程体系！", function(result) {
                 if (result == true) {
                     var csrf = $('.request-csrf').val();
                     $.post(
-                        '?r=banner/bannermanage/batch-del',
+                        '?r=curriculum/default/batch-del',
                         {'banners_id':banners_id, '_csrf': csrf},
                         function (res) {
                             if (res == 500) bootbox.alert(res.msg);

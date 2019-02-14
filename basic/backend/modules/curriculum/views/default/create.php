@@ -1,6 +1,6 @@
 <?php
-$this->title = '轮播图管理';
-$this->params['breadcrumbs'] = [['label'=>'轮播模块','url'=>'?r=banner/bannermanage/index'],['label'=>'轮播图管理', 'url'=>'?r=banner/bannermanage/index'],['label'=>'编辑']];
+$this->title = '课程体系';
+$this->params['breadcrumbs'] = [['label'=>'课程体系管理','url'=>'?r=curriculum/default/index'],['label'=>'编辑']];
 ?>
 
     <h3 class="page-title"> </h3>

@@ -2,8 +2,13 @@
 
 namespace app\backend\modules\curriculum\controllers;
 
+use app\models\Common;
+use app\models\TCurriculum;
 use yii\web\Controller;
 use app\backend\components\BaseController;
+use Yii;
+use yii\data\Pagination;
+use yii\helpers\Json;
 
 /**
  * Default controller for the `curriculum` module
@@ -31,6 +36,85 @@ class DefaultController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $this->data['search_attributes'] =  $params = Yii::$app->request->get();
+        $pageIndex = Yii::$app->request->get('page',1);
+        $model = TCurriculum::getList(TCurriculum::search($params),$pageIndex,$this->pageSize);
+        $this->data['count'] = $model['count'];
+        $this->data['dataProvider'] = $model['list'];
+
+        $this->data['pages'] = new Pagination(
+            [
+                'totalCount' => $this->data['count'],
+                'defaultPageSize'=>$pageIndex,
+                'pageSizeLimit'=>[$this->pageSize,$this->pageSize]
+            ]
+        );
+        return $this -> render('index',$this->data);
+    }
+    /**
+     * 添加
+     */
+    public function actionCreate(){
+        $this->data['action'] = 'create';
+        $post = \Yii::$app->request->post('Curriculum');
+        if($post){
+            $post['create_time'] = time();
+            $post['cover_img'] = $post['cover_img']?Common::common($post['cover_img'], 'coverimg'):'';
+            $model = new TCurriculum();
+            $model->attributes = $post;
+            $submit = $model->save()?200:500;
+            $this->refresh('&ref_sub='.$submit);
+        }
+        return $this->render('create',$this->data);
+    }
+    /**
+     * 编辑
+     */
+    public function actionUpdate(){
+        $id = Yii::$app->request->get('id');
+        $attribute = Yii::$app->request->post('Curriculum');
+        if($attribute){
+            $model = TCurriculum::findOne($id);
+            if (isset($attribute['cover_img']) && $attribute['cover_img']!=$model->cover_img){//图片上传
+                $attribute['cover_img'] = Common::common($attribute['cover_img'], 'coverimg');
+            }
+            $model->update_time = time();
+            $model->name = $attribute['name'];
+            $model->sort = $attribute['sort'];
+            $model->content = $attribute['content'];
+            $submit = $model->save()?200:500;
+            $this->refresh('&ref_sub='.$submit);
+        }
+        $this->data['row'] = TCurriculum::findOne($id);
+        $this->data['action'] = 'update&id='.$id;
+        return $this->render('create',$this->data);
+    }
+    /**
+     * 删除
+     */
+    public function actionDelete()
+    {
+        $this->data['params'] = \yii::$app->request->post();
+        if(TCurriculum::findOne($this->data['params']['id'])->delete()){
+            return Json::encode(['code'=>200, 'msg'=>'删除成功']);
+        }else{
+            return Json::encode(['code'=>400, 'msg'=>'删除失败']);
+        }
+    }
+    /**
+     * 批量删除
+     * @param banners_id
+     * @reutrn array
+     */
+    public function actionBatchDel()
+    {
+
+        $banners_id = trim(Yii::$app->request->post('banners_id'), ',');
+        $banners_id = explode(',',$banners_id);
+        if (!$banners_id) return Json::encode(['code'=>500, 'msg'=>'没有获取请求的ID']);
+        foreach($banners_id as $v){
+            $model = TCurriculum::findOne($v)->delete();
+        }
+        return Json::encode(['code'=>200]);
     }
 }
