@@ -4,6 +4,8 @@ namespace app\backend\modules\admin\controllers;
 use app\backend\components\AppAdminAcl;
 use app\backend\components\BaseController;
 use app\models\TAdmin;
+use app\models\TAppointment;
+use app\models\TJoinin;
 use Yii;
 
 /**
@@ -39,6 +41,10 @@ class AdminController extends BaseController
             'global/plugins/jqvmap/jqvmap/jqvmap.css',
         ];
         $this->getView()->title = '初始页';
+        $this -> data['today_appointment_num'] =  TAppointment::today_appointment_num();
+        $this -> data['today_joinin_num']  = TJoinin::today_joinin_num();
+        $this -> data['appointment_list']  = TAppointment::add_appointment_list();
+        $this -> data['joinin_list'] = TJoinin::add_joinin_list();
         return $this->render('index', $this->data);
     }
 

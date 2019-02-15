@@ -109,4 +109,29 @@ class TAppointment extends \yii\db\ActiveRecord
         }
         return $condition_arr;
     }
+
+    /**
+     * @return mixed
+     * 获取今日预约试听数
+     */
+    public static function today_appointment_num(){
+        $begin_today = mktime(0,0,0,date('m'),date('d'),date('Y'));
+        $end_today = $begin_today + 3600*24;
+        $count = TAppointment::find()->where(['between','create_time',$begin_today,$end_today])->count();
+        return $count;
+    }
+    /**今日新增  最多显示六条
+     * @return array
+     */
+    public static function add_appointment_list()
+    {
+        $begin_today = mktime(0,0,0,date('m'),date('d'),date('Y'));
+        $end_today = $begin_today + 3600*24;
+        $appointment_list = TAppointment::find()->select('*')->where(['between','create_time',$begin_today,$end_today])->orderBy(['create_time'=>SORT_DESC])->limit(6)->asArray()->all();
+        foreach($appointment_list as $k => &$v){
+            $v['create_time'] = date('Y-m-d H:i:s',$v['create_time']);
+        }
+
+        return $appointment_list;
+    }
 }

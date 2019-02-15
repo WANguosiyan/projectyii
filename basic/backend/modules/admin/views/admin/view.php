@@ -62,22 +62,22 @@ $this->params['breadcrumbs'] = [['label' => '站点', 'url' => 'index.php'], ['l
     <div class="col-md-3 white text-center"
          style="background:#3598DC;padding-bottom:12px;margin-left:10px;padding-top:30px;border-radius:8px!important">
         <p class="txt-right">
-            <span class="font-18"><?= isset($today_order_num)?$today_order_num:0;?></span>
+            <span class="font-18"><?= isset($today_appointment_num)?$today_appointment_num:0;?></span>
         </p>
-        <p class="txt-right"><span class="font-16">预约试听</span></p>
+        <p class="txt-right"><span class="font-16">今日预约试听数</span></p>
         <div class="clearfix detail_more">
-            <a class="more fl" href="?r=goods/order/index"> 查看更多</a>
+            <a class="more fl" href="?r=appointment/default/index"> 查看更多</a>
             <i class="m-icon-swapright m-icon-white fr"></i>
         </div>
     </div>
     <div class="col-md-3 white text-center"
          style="background:#E7505A;padding-bottom:12px;margin-left:10px;padding-top:30px;border-radius:8px!important">
         <p class="txt-right">
-            <span class="font-18"><?= isset($today_payed_money)?$today_payed_money:0;?></span>
+            <span class="font-18"><?= isset($today_joinin_num)?$today_joinin_num:0;?></span>
         </p>
-        <p class="txt-right"><span class="font-16">申请加盟</span></p>
+        <p class="txt-right"><span class="font-16">今日申请加盟数</span></p>
         <div class="clearfix detail_more">
-                <a class="more fl" href="?r=goods/order/index"> 查看更多</a>
+                <a class="more fl" href="?r=joinin/default/index"> 查看更多</a>
             <i class="m-icon-swapright m-icon-white fr"></i>
         </div>
     </div>
@@ -88,8 +88,7 @@ $this->params['breadcrumbs'] = [['label' => '站点', 'url' => 'index.php'], ['l
 <div style="width:50%;margin-left: 10px;" class="content_box">
     <div class="clearfix">
         <div class="fl">
-            <img width="20px" src="<?//= \yii::$app->params['img_host'].'/images/backend/share.png'?>" />
-            <span>分享</span>
+
         </div>
         <div class="fr">
             <div class="actions">
@@ -100,10 +99,10 @@ $this->params['breadcrumbs'] = [['label' => '站点', 'url' => 'index.php'], ['l
                     <ul class="dropdown-menu pull-right">
 
                         <li>
-                                <a href="?r=goods/order/index"> 全部订单 </a>
+                                <a href="?r=appointment/default/index"> 全部预约试听 </a>
                         </li>
                         <li>
-                            <a href="?r=usercenter/default/index">全部会员</a>
+                            <a href="?r=joinin/default/index">全部申请加盟</a>
                         </li>
                     </ul>
                 </div>
@@ -116,8 +115,8 @@ $this->params['breadcrumbs'] = [['label' => '站点', 'url' => 'index.php'], ['l
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs"  role="tablist">
-            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">新会员</a></li>
-            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">最新订单</a></li>
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">预约试听</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">申请加盟</a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -126,19 +125,19 @@ $this->params['breadcrumbs'] = [['label' => '站点', 'url' => 'index.php'], ['l
                 <table class="table table-hover table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>会员名称</th>
-                        <th>支付单数</th>
-                        <th>注册时间</th>
+                        <th>宝宝姓名</th>
+                        <th>联系方式</th>
+                        <th>预约时间</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <?php if(isset($user_list)):?>
-                    <?php foreach($user_list as $k => $v):?>
+                    <?php if(isset($appointment_list)):?>
+                    <?php foreach($appointment_list as $k => $v):?>
                         <tr>
                             <td><?= $v['name']; ?></td>
-                            <td><?= $v['payed_order_num']?></td>
-                            <td><?= $v['regtime']?></td>
+                            <td><?= $v['tel']?></td>
+                            <td><?= $v['create_time']?></td>
                         </tr>
                     <?php endforeach;?>
                     <?php endif;?>
@@ -153,29 +152,20 @@ $this->params['breadcrumbs'] = [['label' => '站点', 'url' => 'index.php'], ['l
                 <table class="table table-hover table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>订单号</th>
-                        <th>创建时间</th>
-                        <th>订单状态</th>
+                        <th>姓名</th>
+                        <th>联系方式</th>
+                        <th>申请时间</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <?php if(isset($user_list)):?>
-                    <?php foreach($order_list as $k => $v):?>
+                    <?php if(isset($joinin_list)):?>
+                    <?php foreach($joinin_list as $k => $v):?>
                         <tr>
-                            <td><?= $v['order_id']?></td>
+                            <td><?= $v['name']?></td>
+                            <td><?= $v['tel']?></td>
                             <td><?= date('Y-m-d H:i:s',$v['create_time'])?></td>
-                            <td>
-                                <?php if($v['status'] == 'dead'){
-                                    echo "已取消";
-                                }else if($v['status'] == 'active' && $v['pay_status'] == '0'){
-                                    echo "待支付";
-                                }else if($v['status'] == 'active' && $v['pay_status'] != '0'){
-                                    echo "已支付";
-                                }else if($v['status'] == 'finish'){
-                                    echo "已完成";
-                                }?>
-                            </td>
+
                         </tr>
                     <?php endforeach;?>
                     <?php endif;?>
