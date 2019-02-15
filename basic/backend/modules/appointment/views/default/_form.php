@@ -1,4 +1,4 @@
-<form action="?r=banner/default/<?php echo $action; ?>" class="form-horizontal" id="validation-form"
+<form action="?r=administrators/default/<?php echo $action; ?>" class="form-horizontal" id="validation-form"
       method="post">
     <?php echo $this->render('@app/backend/views/common/form_tip'); ?>
 

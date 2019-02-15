@@ -55,4 +55,50 @@ class TAdmin extends \yii\db\ActiveRecord
             'disabled' => 'Disabled',
         ];
     }
+    /**
+     * 获取列表
+     */
+    public static function getList($conditionArr = [], $pageIndex = 1, $pageSize = 15, $order = 't1.create_time DESC')
+    {
+        $start = ($pageIndex - 1) * $pageSize;
+        $condition = implode(' AND ', $conditionArr);
+        if($condition){
+            $model['count'] = self::getDb()->createCommand(
+                'SELECT COUNT(*) FROM '.TAdmin::tableName().' AS t1 WHERE '.$condition
+            )->queryScalar();
+            $model['list'] = self::getDb()->createCommand(
+                'SELECT t1.* '.
+                'FROM '.TAdmin::tableName().' AS t1 '.
+                'WHERE '.$condition.' ORDER BY '.$order.' LIMIT '.$start.','.$pageSize
+            )->queryAll();
+        }else{
+            $model['count'] = self::getDb()->createCommand(
+                'SELECT COUNT(*) FROM '.TAdmin::tableName()
+            )->queryScalar();
+            $model['list'] = self::getDb()->createCommand(
+                'SELECT t1.* '.
+                'FROM '.TAdmin::tableName().' AS t1 '.
+                ' ORDER BY '.$order.' LIMIT '.$start.','.$pageSize
+            )->queryAll();
+        }
+
+
+
+        return $model;
+    }
+    /**
+     * 搜索条件
+     *
+     */
+    public static function search($params){
+//        echo "<pre>";
+//        var_dump($params);die;
+        $condition_arr = [];
+        if(isset($params['type']) && $params['type'] == 1){
+            $condition_arr[] = " t1.{$params['Single']['name']} LIKE '%{$params['Single']['search_val']}%'  ";
+        }else{
+
+        }
+        return $condition_arr;
+    }
 }
