@@ -143,6 +143,44 @@ class AppAdminAcl
                 ],
             ]
         ],
+        [
+            'name'=>'预约试听',
+            'module'=>'appointment',
+            'ctl'=>[
+                [
+                    'name'=>'预约试听',
+                    'icon'=>'icon-wallet',
+                    'list_ctl'=>['default'],
+                    'act'=>[
+                        'default'=>[
+                            'name'=>'   预约列表',
+                            'sidebar'=>true,
+                            'default_id'=>'index',
+                            'list_act'=>['index'=>'列表', 'create'=>'新增','update'=>'编辑','delete'=>'删除']
+                        ],
+                    ],
+                ],
+            ]
+        ],
+        [
+            'name'=>'申请加盟',
+            'module'=>'joinin',
+            'ctl'=>[
+                [
+                    'name'=>'申请加盟',
+                    'icon'=>'icon-wallet',
+                    'list_ctl'=>['default'],
+                    'act'=>[
+                        'default'=>[
+                            'name'=>'   申请加盟列表',
+                            'sidebar'=>true,
+                            'default_id'=>'index',
+                            'list_act'=>['index'=>'列表', 'create'=>'新增','update'=>'编辑','delete'=>'删除']
+                        ],
+                    ],
+                ],
+            ]
+        ],
     ];
 
     /**

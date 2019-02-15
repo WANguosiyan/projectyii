@@ -79,6 +79,12 @@ $config = [
         'administrators' => [
             'class' => 'app\backend\modules\administrators\module',
         ],
+        'appointment' => [
+            'class' => 'app\backend\modules\appointment\module',
+        ],
+        'joinin' => [
+            'class' => 'app\backend\modules\joinin\module',
+        ],
     ],
 ];
 
