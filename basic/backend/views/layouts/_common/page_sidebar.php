@@ -1,9 +1,5 @@
 <?php
 use app\backend\components\AppAdminAcl;
-use app\backend\components\ApiAdminAcl;
-use app\backend\components\OweAdminAcl;
-use app\backend\components\PosAdminAcl;
-use app\backend\components\ZhuzaiAdminAcl;
 ?>
 <div class="page-sidebar navbar-collapse collapse">
     <ul style="padding-top: 20px" data-slide-speed="200" data-auto-scroll="true" data-keep-expanded="false" class="page-sidebar-menu  page-header-fixed">

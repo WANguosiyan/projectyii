@@ -4,7 +4,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="?r=admin/default/index">
-                <img src="<?php echo \yii::$app->session['logo'];?>" alt="logo" class="logo-default" />
+<!--                <img src="--><?php //echo \yii::$app->session['logo'];?><!--" alt="logo" class="logo-default" />-->
             </a>
             <div class="menu-toggler sidebar-toggler"> </div>
         </div>

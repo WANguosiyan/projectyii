@@ -17,7 +17,7 @@ AppAsset::register($this);
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="/index.html">
-                <img src="<?php echo \yii\helpers\Url::to('@web/themes/dm/images/logo.png');?>" alt="" />
+                <img src="<?php echo \yii\helpers\Url::to('@web/themes/images/logo.png');?>" alt="" />
             </a>
         </div>
         <!-- END LOGO -->

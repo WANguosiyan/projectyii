@@ -1,38 +1,38 @@
 <?php
-
-$params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
-
+//$params = require(__DIR__ . '/../backend/config/params.php');
+$params = require(__DIR__ . '/params.php');
+$public_params = require(__DIR__ . '/params.php');
+if (YII_ENV == 'dev') {
+    $host = 'http://localhost/projectyii/basic';
+} else {
+    $host = 'http://localhost/projectyii/basic';
+}
+$params['img_host'] = 'http://project.com';
 $config = [
     'id' => 'basic',
+    'language'=>'zh-CN',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' => 'site/default/login',
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-    ],
+    'defaultRoute' => 'home/default/index',
     'components' => [
+        'session' => [
+            'class' => 'yii\web\DbSession',
+            'db' => 'db',
+            'sessionTable'=>'session'
+        ],
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'PwCMoZzJftF3Q2nWb3hBBVdkB65YNaZg',
+            'cookieValidationKey' => '9oVZ7xEIgyyBlpE5_Fp0WxDTCjahLrP1',
+            'enableCsrfValidation' => false,
         ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'suffix' => false,//后缀
+            'enableStrictParsing'=>false,//不要求网址严格匹配，则不需要输入rules
+            'rules' => require(__DIR__ . '/../api/config/rule.php'),
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
-//        'errorHandler' => [
-//            'errorAction' => 'site/error/index',
-//        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            //send all mails to a file by default. You have to set
-            //'useFileTransport' to false and configure a transport
-            //for the mailer to send real emails.
-            'useFileTransport' => true,
+        'errorHandler' => [
+            'errorAction' => 'home/error/index',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -43,22 +43,17 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+        'db' => require(__DIR__ . '/db.php'),
     ],
-    'params' => $params,
+    'params' => array_merge($public_params,$params),
     'modules' => [
-        'v1' => [
-            'class' => 'app\api\modules\v1\Module',
+        'home' => [
+            'class' => 'app\api\modules\home\Module',
         ],
+        'site' => [
+            'class' => 'app\api\modules\site\Module',
+        ],
+
     ],
 ];
-
 return $config;

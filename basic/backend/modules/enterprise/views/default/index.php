@@ -144,7 +144,15 @@
                                         type="text/plain"><?php echo isset($row['abstract']) ? $row['abstract'] : ''; ?></script>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="control-label col-md-3">版权所有
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" name="Enterprise[copyright]" class="form-control"
+                                       value="<?php echo isset($row['copyright']) ? $row['copyright'] : ''; ?>"/>
+                            </div>
+                        </div>
 
                     </div>
 

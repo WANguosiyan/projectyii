@@ -164,7 +164,7 @@ $this->params['breadcrumbs'] = [['label' => '站点', 'url' => 'index.php'], ['l
                         <tr>
                             <td><?= $v['name']?></td>
                             <td><?= $v['tel']?></td>
-                            <td><?= date('Y-m-d H:i:s',$v['create_time'])?></td>
+                            <td><?= $v['create_time']?></td>
 
                         </tr>
                     <?php endforeach;?>
