@@ -13,17 +13,17 @@
 <body>
     <div id="app">
         <div class="header">
-            <img src="./image/logo.png" alt="">
+            <img :src="companyProfile.logo" alt="">
             <div class="connect_box">
                 <div>
                     <div>
-                        <img src="./image/dianhua.png" alt="">
+                        <img src="image/dianhua.png" alt="">
                         <span>15800399892</span>
                     </div>
                 </div>
                 <div>
-                    <span>预约试听</span>
-                    <span>申请加盟</span>
+                    <span @click="selform(1)">预约试听</span>
+                    <span @click="selform(2)">申请加盟</span>
                 </div>
             </div>
         </div>
@@ -41,8 +41,8 @@
         <div class="swiper_box">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#"><img src="./image/banner1.png"></a>
+                    <div class="swiper-slide"  v-for="(item,key,index) in bannerr">
+                        <a href="#"><img :src="item"></a>
                     </div>
                     <div class="swiper-slide">
                         <a href="#"><img src="./image/banner2.png"></a>
@@ -57,7 +57,7 @@
 
             </div>
         </div>
-        <div class="curriculumSystem_box" v-if="nowpage==1||nowpage==2">
+        <div :class="['curriculumSystem_box',{'curriculumSystem_boxx':nowpage==2}]" v-if="nowpage==1||nowpage==2">
             <div class="curriculumSystem">
                 <div class="title_box">
                     <div>
@@ -69,61 +69,21 @@
                     </div>
 
                 </div>
-
                 <div class="curriculumAney">
-                    <a href="">
+                    <a href=""  v-for="(item,index,key) in curriculum" v-if="index<curriculumNum">
                         <div>
                             <div>
-                                <img src="./image/kecheng1.png" alt="">
+                                <img :src="item.cover_img" alt="">
                             </div>
-                            <span>成长俱乐部</span>
+                            <span>{{item.name}}</span>
                         </div>
                     </a>
-                    <a href="">
-                        <div>
-                            <div>
-                                <img src="./image/kecheng2.png" alt="">
-                            </div>
-                            <span>成长俱乐部</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div>
-                            <div>
-                                <img src="./image/kecheng1.png" alt="">
-                            </div>
-                            <span>成长俱乐部</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div>
-                            <div>
-                                <img src="./image/kecheng2.png" alt="">
-                            </div>
-                            <span>成长俱乐部</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div>
-                            <div>
-                                <img src="./image/kecheng1.png" alt="">
-                            </div>
-                            <span>成长俱乐部</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div>
-                            <div>
-                                <img src="./image/kecheng2.png" alt="">
-                            </div>
-                            <span>成长俱乐部</span>
-                        </div>
-                    </a>
-
-
                 </div>
             </div>
             <img src="./image/tuzi.png" class="tu tu_bottom" alt="">
+            <div class="detail_back_huigui_bottomImg" v-if="nowpage==2">
+                <img src="./image/iconbg.png" alt="">
+            </div>
 
         </div>
         <div class="icon_box" v-if="nowpage==1">
@@ -147,31 +107,29 @@
                 </div>
             </div>
         </div>
-        <div class="icon_box people_box" v-if="nowpage==1||nowpage==5">
+        <div :class="['icon_box', 'people_box',{'selrenwu':nowpage==5}]" v-if="nowpage==1||nowpage==5">
+                <div class="title_box" v-if="nowpage==5">
+                        <div>
+                            <div class="title">
+                                师资团队    
+                            </div>
+                            <img src="./image/logo_ti.png" alt="">
+                        </div>
+    
+                    </div>
             <div class="renwu">
                 <div>
-                    <div>
+                    <div  v-for="(item,index,key) in teacherTeam" v-if="index<teacherTeamNum">
                         <div>
-                            <img src="./image/renwu1.png" alt="">
+                            <img :src="item.cover_img" alt="" >
                         </div>
-                        <h1>宋翊彰</h1>
-                        <p>童森教育·戏剧教育老师，擅长主 持、演戏、亲子互动、唱跳、幼 儿体势能等，江苏教育电视台主 持人，参加过麻辣天后宫、康熙 来了</p>
-                    </div>
-                    <div>
-                        <div>
-                            <img src="./image/renwu2.png" alt="">
-                        </div>
-                        <h1>宋翊彰</h1>
-                        <p>童森教育·戏剧教育老师，擅长主 持、演戏、亲子互动、唱跳、幼 儿体势能等，江苏教育电视台主 持人，参加过麻辣天后宫、康熙 来了</p>
-                    </div>
-                    <div>
-                        <div>
-                            <img src="./image/renwu3.png" alt="">
-                        </div>
-                        <h1>宋翊彰</h1>
-                        <p>童森教育·戏剧教育老师，擅长主 持、演戏、亲子互动、唱跳、幼 儿体势能等，江苏教育电视台主 持人，参加过麻辣天后宫、康熙 来了</p>
+                        <h1>{{item.name}}</h1>
+                        <p>{{item.content}}</p>
                     </div>
                 </div>
+            </div>
+            <div class="detail_back_huigui_bottomImg" v-if="nowpage==5">
+                <img src="./image/iconbg.png" alt="">
             </div>
             <div id="get_more">
                 <span @click="selpahe(5)" v-if="nowpage==1">查看更多</span>
@@ -187,56 +145,19 @@
                         <img src="./image/logo_ti.png" alt="">
                     </div>
                 </div>
-                <div class="action">
+                <div class="action" v-for="(item,index,key) in wonderfulReview"  v-if="index<wonderfulReviewNum">
                     <div>
-                        <img src="./image/huodong1.png" alt="">
+                        <img :src="item.cover_img" alt="">
                     </div>
                     <div>
                         <h1>
-                            活动标题
+                            {{item.name}}
                             <i></i>
                         </h1>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                        <p> {{item.content}}</p>
                     </div>
                 </div>
-                <div class="action">
 
-                    <div>
-                        <h1>
-                            活动标题
-                            <i></i>
-                        </h1>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    </div>
-                    <div>
-                        <img src="./image/huodong3.png" alt="">
-                    </div>
-                </div>
-                <div class="action">
-                    <div>
-                        <img src="./image/huodong3.png" alt="">
-                    </div>
-                    <div>
-                        <h1>
-                            活动标题
-                            <i></i>
-                        </h1>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    </div>
-                </div>
-                <div class="action">
-
-                    <div>
-                        <h1>
-                            活动标题
-                            <i></i>
-                        </h1>
-                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                    </div>
-                    <div>
-                        <img src="./image/huodong4.png" alt="">
-                    </div>
-                </div>
             </div>
             <div id="get_more" v-if="nowpage==1">
                 <span @click="selpahe(4)">查看更多</span>
@@ -260,16 +181,16 @@
             </div>
             <div class="image_box">
                 <div>
-                    <img src="./image/intro1.png" alt="">
+                    <img :src="companyProfile.abstract1" alt="">
                 </div>
                 <div>
-                    <img src="./image/intro2.png" alt="">
+                    <img :src="companyProfile.abstract2" alt="">
                 </div>
                 <div>
-                    <img src="./image/intro3.png" alt="">
+                    <img :src="companyProfile.abstract3" alt="">
                 </div>
                 <div>
-                    <img src="./image/intro4.png" alt="">
+                    <img :src="companyProfile.abstract4" alt="">
                 </div>
             </div>
             <div class="intro_wen">
@@ -377,21 +298,142 @@
             </div>
             <div class="sing_all">
                 <div>
-                    公司名称：兔森林总部
+                    公司名称：{{companyProfile.copyright}}
                 </div>
                 <div>
-                    兰小姐：15800.399892兰小姐(上海店店长)
+                    联系人：{{companyProfile.linkman}}
                 </div>
                 <div>
-                    邮箱： m31139069@163.com
+                    邮箱： {{companyProfile.email}}
                 </div>
                 <div>
-                    地址：上海市静安区鸿江路1538号1楼
+                    地址：{{companyProfile.address}}
                 </div>
                 <div>
                     版权所有：&copy;兔森林总部
                 </div>
             </div>
+        </div>
+        <div class="suggesBox" v-if="formPage==1|| formPage==2">
+            <form name="date">
+                <div class="title_box">
+                    <div>
+                        <div class="title" v-if="formPage==1">
+                            预约试听
+                        </div>
+                        <div class="title" v-if="formPage==2">
+                            申请加盟
+                        </div>
+                        <img src="./image/logo_ti.png" alt="">
+                    </div>
+                </div>
+                <div class="formSel">
+                    <div>
+                        <p v-if="formPage==1">宝宝姓名:</p>
+                        <p v-if="formPage==2">姓名:</p>
+                        <input type="text" class="name">
+                    </div>
+                    <div>
+                        <p v-if="formPage==1">宝宝性别:</p>
+                        <p v-if="formPage==2">性别:</p>
+                        <input type="text" class="sex">
+                        <b>男</b>
+                    </div>
+                </div>
+                <div class="formSel">
+                    <div>
+                        <p v-if="formPage==1">宝宝生日:</p>
+                        <p v-if="formPage==2">出生日期:</p>
+                        <select name="year" onchange="selectYear(this.value)"></select>
+                        <b class="rightMore" class="year">年</b>
+                    </div>
+                    <div>
+                        <p></p>
+                        <select name="month" onchange="selectMonth(this.value)"></select>
+                        <b class="rightMore" class="mounth">月</b>
+                    </div>
+                    <div>
+                        <p></p>
+                        <select name="day"></select>
+                        <b class="rightMore"  class="days">日</b>
+                    </div>
+
+                </div>
+                <div class="formSel">
+                    <div>
+                        <p>所在城市:</p>
+                        <select name="province" onchange="getCity()" id="province"></select>
+                        <b class="rightMore" class="provinces">省</b>
+                    </div>
+                    <div>
+                        <p></p>
+                        <select name="city" onchange="" id="city"></select>
+                        <b class="rightMore"  class="shi" >市</b>
+                    </div>
+                </div>
+                <div class="formSel">
+                    <div :class="[{'allForm':formPage==1}]">
+                        <p v-if="formPage==1">家长手机:</p>
+                        <p v-if="formPage==2">联系电话:</p>
+                        <input type="text" class="phone">
+                    </div>
+                    <div v-if="formPage==2">
+                        <p>电子邮箱:</p>
+                        <input type="text" class="email">
+                    </div>
+                </div>
+                <div class="formSel" v-if="formPage==2">
+                    <div class="allForm">
+                        <p>启动资金:</p>
+                        <div class="moneySel">
+                            <div>
+                                <div :class="['oneMoney',{'oneMoneyActive':oneMoneyActive==1}]" @click="oneMoneyActiveSel(1)">
+                                    <i></i>
+                                </div>
+                                <span>50万 ~ 100万</span>
+                            </div>
+                            <div>
+                                <div :class="['oneMoney',{'oneMoneyActive':oneMoneyActive==2}]" @click="oneMoneyActiveSel(2)">
+                                    <i></i>
+                                </div>
+                                <span>100万 ~ 200万</span>
+                            </div>
+                            <div>
+                                <div :class="['oneMoney',{'oneMoneyActive':oneMoneyActive==3}]" @click="oneMoneyActiveSel(3)">
+                                    <i></i>
+                                </div>
+                                <span>200万以上</span>
+                            </div>
+                            <div>
+                                <div :class="['oneMoney',{'oneMoneyActive':oneMoneyActive==4}]" @click="oneMoneyActiveSel(4)">
+                                    <i></i>
+                                </div>
+                                <span>城市合伙人模式</span>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="formSel" v-if="formPage==2">
+                    <div class="allForm">
+                        <p>留言:</p>
+                        <textarea name="" id="" cols="30" rows="10" class="msg"></textarea>
+
+                    </div>
+                </div>
+                <div class="title_box title_boxx">
+                    <div>
+                        <div class="title" @click="formGet">
+                            提交
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </form>
         </div>
     </div>
     <script src="./js/jquery.min.js"></script>
@@ -399,6 +441,7 @@
     <script src="./js/flexible_css.debug.js"></script>
     <script src="./js/flexible.debug.js"></script>
     <script src="./js/vue.min.js"></script>
+    <script src="./js/provinces.js" type="text/javascript"></script>
     <script>
         var banner = new Swiper('.swiper-container', {
             loop: true,
@@ -406,25 +449,358 @@
             pagination: '.banner-pagination', //显示焦点按钮
             paginationClickable: '.banner-pagination', //焦点按钮可点击
         });
+        var _this=this;
         var app = new Vue({
             el: '#app',
             data: {
                 nowpage: 1,
-                nowpinmuheight:{}
+                formPage: false,
+                nowpinmuheight:{},
+                bannerr:[],
+                curriculum:[],
+                curriculumNum:5,
+                teacherTeam:[],
+                teacherTeamNum:2,
+                wonderfulReview:[],
+                wonderfulReviewNum:3,
+                companyProfile:{},
+                oneMoneyActive:1,
+            },
+            created:function(){
+                _this=this;
             },
             mounted() {
-                this.nowpage=GetQueryString('nowpage')
-
-                if(window.screen.width<590){
-                    $("#app")[0].style.minHeight=window.screen.height-160+'px';
+                this.nowpage = GetQueryString('nowpage');
+                if (window.screen.width < 590) {
+                    $("#app")[0].style.minHeight = window.screen.height - 160 + 'px';
                 }
-           
-         
+                $.post("/api/index.php/site/default/get-banner-list",null,function(result){
+                    let arr=[];
+                    for(let i=0;i<result.date.length;i++){
+                        arr.push(result.date[i].img_url)
+                    }
+                    _this.bannerr=arr;
+                });
+                $.post("/api/index.php/site/default/get-curriculum",null,function(result){
+                    let arr=[];
+                    for(let i=0;i<result.date.length;i++){
+                        let obj={
+                            content:"",
+                            cover_img:"",
+                            sug:"",
+                            name:""
+                        };
+                        let str=result.date[i].content.split('<p><em>');
+                        let strr=str[1].split('</em><br/></p')[0]
+                        obj.content=strr;
+                        obj.cover_img=result.date[i].cover_img;
+                        obj.sug=result.date[i].create_time;
+                        obj.name=result.date[i].name;
+                        arr.push(obj);
+                    }
+                    _this.curriculum=arr;
+                });
+                $.post("/api/index.php/site/default/get-teacherteam-list",null,function(result){
+                    let arr=[];
+                    for(let i=0;i<result.date.length;i++){
+                        let obj={
+                            content:"",
+                            cover_img:"",
+                            sug:"",
+                            name:""
+                        };
+                        obj.content=result.date[i].content
+                        obj.cover_img=result.date[i].cover_img;
+                        obj.sug=result.date[i].create_time;
+                        obj.name=result.date[i].name;
+                        arr.push(obj);
+                    }
+                    _this.teacherTeam=arr;
+
+                })
+                $.post("/api/index.php/site/default/get-review",null,function(result){
+                    let arr=[];
+                    for(let i=0;i<result.date.length;i++){
+                        let obj={
+                            content:"",
+                            cover_img:"",
+                            sug:"",
+                            name:""
+                        };
+                        obj.content=result.date[i].summary
+                        obj.cover_img=result.date[i].cover_img;
+                        obj.sug=result.date[i].conter;
+                        obj.name=result.date[i].title;
+                        arr.push(obj);
+                    }
+                    _this.wonderfulReview=arr;
+
+                })
+                $.post("/api/index.php/site/default/get-enterprise",null,function(result){
+                    let arr=[];
+                    let obj={
+                        abstract1:"",
+                        abstract2:"",
+                        abstract3:"",
+                        abstract4:"",
+                        abstract:"",
+                        address:"",
+                        copyright:"兔森林总部",
+                        email:"m31139069@163.com",
+                        linkman:"15800.399892兰小姐(上海店店长)",
+                        name:"兔森林总部",
+                        qr_code:"http://project.com/images/qrcode/20190214/15501444103710.jpeg",
+                        tel:"15800399892",
+                        update_time:"1550309412",
+
+                    };
+                    obj.abstract1="./image/intro1.png";
+                    obj.abstract2="./image/intro1.png";
+                    obj.abstract3="./image/intro1.png";
+                    obj.abstract4="./image/intro1.png";
+                    obj.address= result.date.address;
+                    obj.copyright= result.date.copyright;
+                    obj.email= result.date.email;
+                    obj.linkman= result.date.linkman;
+                    obj.tel= result.date.tel;
+                    obj.name= result.date.name;
+                    obj.name= result.date.name;
+                    obj.name= result.date.name;
+                    _this.companyProfile=obj;
+                });
+                $.post("/api/index.php/site/default/get-brandplan",null,function(result){
+                    let arr=[];
+                    let obj={
+                        abstract1:"",
+                        abstract2:"",
+                        abstract3:"",
+                        abstract4:"",
+                        abstract:"",
+                        address:"",
+                        copyright:"兔森林总部",
+                        email:"m31139069@163.com",
+                        linkman:"15800.399892兰小姐(上海店店长)",
+                        name:"兔森林总部",
+                        qr_code:"http://project.com/images/qrcode/20190214/15501444103710.jpeg",
+                        tel:"15800399892",
+                        update_time:"1550309412",
+
+                    };
+                    obj.abstract1="./image/intro1.png";
+                    obj.abstract2="./image/intro1.png";
+                    obj.abstract3="./image/intro1.png";
+                    obj.abstract4="./image/intro1.png";
+                    obj.address= result.date.address;
+                    obj.copyright= result.date.copyright;
+                    obj.email= result.date.email;
+                    obj.linkman= result.date.linkman;
+                    obj.tel= result.date.tel;
+                    obj.name= result.date.name;
+                    obj.name= result.date.name;
+                    obj.name= result.date.name;
+                    _this.companyProfile=obj;
+                });
+
+
             },
+
             methods: {
                 selpahe(num) {
                     window.history.pushState(null, null, '?nowpage=' + num)
                     this.nowpage = num
+                },
+                selform(num) {
+                     $(".name").val("");
+                    $(".sex").val("");
+                    $(".year option:selected ").val("");
+                    $(".mounth option:selected").val("");
+                    $(".days option:selected").val("");
+                    $(".provinces option:selected").val("");
+                    $(".shi option:selected").val("");
+                    $(".phone").val("");
+                    $(".email").val("");
+                    $(".msg").val("");
+                    this.oneMoneyActive=1;
+                    if (this.formPage != num) {
+                        this.formPage = num;
+                    } else {
+                        this.formPage = false;
+
+                    };
+                    setTimeout(function(){
+                        dateStart();
+                    },10)
+
+
+                },
+                formGet(){
+                    var  name=$(".name").val();
+                    var  sex=  $(".sex").val();
+                    var  year='';
+                    var  mounth='';
+                    var  days='';
+                    var  provinces='';
+                    var  shi= '';
+                    if(document.date.month.selectedIndex>0){
+                        mounth=  document.date.month.options[document.date.month.selectedIndex].value;
+                    }
+                    if(document.date.year.selectedIndex>0){
+                        year=  document.date.year.options[document.date.year.selectedIndex].value;
+                    }
+                    if(document.date.day.selectedIndex>0){
+                        days=  document.date.day.options[document.date.day.selectedIndex].value;
+                    }
+                    if(document.date.province.selectedIndex>0){
+                        provinces=  document.date.province.options[document.date.province.selectedIndex].value;
+                    }
+                    if(document.date.city.selectedIndex>0){
+                        shi=  document.date.city.options[document.date.city.selectedIndex].value;
+                    }
+                    let phone=$(".phone").val();
+                    let email=$(".email").val();
+                    let msg=$(".msg").val();
+                    let capital='0~60万'
+                    if(this.formPage==2){
+                         if(name){
+                             if(sex=='男'|| sex=='女'){
+                                 switch(sex){
+                                     case '男': sex=1;break;
+                                     case '女': sex=2;break;
+                                 }
+                                 if(year){
+                                     if(mounth){
+                                         if(days){
+                                            if(provinces){
+                                                if(shi){
+                                                    if(phone){
+                                                        if((/^1[34578]\d{9}$/.test(phone))){
+                                                        if(email){
+                                                             let nn= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                                                            if(nn.test(email)){
+
+                                                             switch(this.oneMoneyActive){
+                                                                 case 1:capital='50万 ~ 100万';break;
+                                                                 case 2:capital='100万 ~ 200万';break;
+                                                                 case 3:capital='200万以上';break;
+                                                                 case 4:capital='城市合伙人模式';break;
+                                                             }
+                                                                let obj={};
+                                                                obj.name=name;
+                                                                obj.sex=sex;
+                                                                obj.birth_date= obj.year+'-'+obj.mounth+'-'+obj.days
+                                                                obj.province=provinces;
+                                                                obj.city= shi;
+                                                                obj.tel=phone;
+                                                                obj.email=email;
+                                                                obj.message=msg;
+                                                                obj.capital=capital;
+                                                                $.post("/api/index.php/site/default/joinin",obj,function(result){
+                                                                    _this.formPage=false;
+                                                                    alert('提交成功')
+                                                                });
+
+
+
+
+                                                            }else{
+                                                                alert('邮箱格式错误')
+                                                            }
+                                                        }else(
+                                                            alert('请填写邮箱')
+                                                        )
+                                                        }else{
+                                                            alert('电话号码错误')
+                                                        }
+                                                    }else{
+                                                        alert('请填写电话')
+                                                    }
+                                                }else{
+                                                    alert('请选择城市')
+                                                }
+                                            }else{
+                                                alert('请选择省市')
+                                            }
+
+                                         }else{
+                                             alert('请选择天数')
+                                         }
+
+                                     }else{
+                                         alert('请选择月份')
+                                     }
+
+                                 }else{
+                                     alert('请选择年份')
+                                 }
+                             }else{
+                                 alert('请填写性别')
+                             }
+                         }else{
+                             alert('请填写姓名')
+                         }
+
+                    }
+                    if(this.formPage==1){
+                        if(name){
+                            if(sex=='男'|| sex=='女'){
+                                switch(sex){
+                                    case '男': sex=1;break;
+                                    case '女': sex=2;break;
+                                }
+                                if(year){
+                                    if(mounth){
+                                        if(days){
+                                            if(provinces){
+                                                if(shi){
+                                                    if(phone){
+                                                        if((/^1[34578]\d{9}$/.test(phone))){
+                                                                    let obj={};
+                                                                    obj.name=name;
+                                                                    obj.sex=sex;
+                                                                    obj.birth_date= obj.year+'-'+obj.mounth+'-'+obj.days
+                                                                    obj.province=provinces;
+                                                                    obj.city= shi;
+                                                                    obj.tel=phone;
+                                                                    $.post("/api/index.php/site/default/appointment",obj,function(result){
+                                                                        _this.formPage=false;
+                                                                        alert('提交成功')
+                                                                    });
+
+                                                        }else{
+                                                            alert('电话号码错误')
+                                                        }
+                                                    }else{
+                                                        alert('请填写电话')
+                                                    }
+                                                }else{
+                                                    alert('请选择城市')
+                                                }
+                                            }else{
+                                                alert('请选择省市')
+                                            }
+
+                                        }else{
+                                            alert('请选择天数')
+                                        }
+
+                                    }else{
+                                        alert('请选择月份')
+                                    }
+
+                                }else{
+                                    alert('请选择年份')
+                                }
+                            }else{
+                                alert('请填写性别')
+                            }
+                        }else{
+                            alert('请填写姓名')
+                        }
+
+                    }
+                },
+                oneMoneyActiveSel(num){
+                    oneMoneyActive=num;
                 }
             }
         })
@@ -435,18 +811,117 @@
             paginationClickable: '.banner-pagination', //焦点按钮可点击
         });
         $(window).on('popstate', function () {
-            app.nowpage=GetQueryString('nowpage')
+            app.nowpage = GetQueryString('nowpage')
         });
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return 1;
+
+        }
 
 
 
-    function GetQueryString(name){
-     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if(r!=null)return  unescape(r[2]); return 1;
+        //日期初始化
+        function dateStart() {
+            //月份对应天数
+            MonHead = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-}
+            //给年下拉框赋内容   
+            var y = new Date().getFullYear();
+            for (var i = (y - 50); i < (y + 50); i++) //以今年为准，前50年，后50年   
+                document.date.year.options.add(new Option(" " + i, i));
 
+            //给月下拉框赋内容   
+            for (var i = 1; i < 13; i++) {
+                document.date.month.options.add(new Option(" " + i, i));
+            }
+            document.date.year.value = '';
+            document.date.month.value = '';
+            document.date.day.value = '';
+            getProvince()
+        }
+        function selectYear(str) //年发生变化时日期发生变化(主要是判断闰平年)   
+        {
+            console.log(document.date.month.options);
+            console.log(document.date.month.selectedIndex);
+            if (document.date.month.selectedIndex>0) {
+            var monthvalue = document.date.month.options[document.date.month.selectedIndex].value;
+
+                var e = document.date.day;
+                optionsClear(e);
+                return;
+            }
+            var n = MonHead[monthvalue - 1];
+            if (monthvalue == 2 && IsPinYear(str))
+                n++;
+            writeDay(n);
+        }
+
+        function selectMonth(str)   //月发生变化时日期联动   
+        {
+            var yearvalue = document.date.year.options[document.date.year.selectedIndex].value;
+            if (yearvalue == "") {
+                var e = document.date.day;
+                optionsClear(e);
+                return;
+            }
+            var n = MonHead[str - 1];
+            if (str == 2 && IsPinYear(yearvalue))
+                n++;
+            writeDay(n);
+        }
+
+        function writeDay(n)   //据条件写日期的下拉框   
+        {
+            var e = document.date.day; optionsClear(e);
+            for (var i = 1; i < (n + 1); i++)
+                e.options.add(new Option(" " + i, i));
+        }
+
+        function IsPinYear(year)//判断是否闰平年   
+        {
+            return (0 == year % 4 && (year % 100 != 0 || year % 400 == 0));
+        }
+
+        function optionsClear(e) {
+            e.options.length = 1;
+        }
+        //省市出事化
+        function getProvince() { //省市刷新
+            //通过id获取省份下拉框的对象 （省份的下拉框的id是province）    
+            var provincesobj = document.getElementById("province");
+            for (var i = 0; i < provinceArr.length; i++) {
+                provincesobj.options[provincesobj.options.length] = new Option(provinceArr[i], i);
+
+            }
+            document.date.province.value = '';
+            document.date.city.value = '';
+
+        }
+
+        function getCity() {
+            //1.获取省份选择框的对象
+            var provincesobj = document.getElementById("province");
+            //2.获取市县选择框的对象
+            var cityobj = document.getElementById("city");
+            //3.获取被选择的省份的索引
+            var index = provincesobj.selectedIndex;
+
+            //alert(provincesobj[index].value+","+provincesobj[index].text);
+            ////4.通过省份的索引获取它的value值，value值也是它在数组的索引值
+            var value = provincesobj[index].value;;
+
+            //5.获取对应省份的市县数组
+            var cityName = cityArr[value];
+            //6.将下拉框清楚索引为0之后的，只保留第一个
+            cityobj.length = 1;
+            //通过循环遍历市县元素给下拉框赋值
+            for (var i = 1; i < cityArr[value].length; i++) {
+                cityobj.options[cityobj.options.length] = new Option(cityName[i], i);
+            }
+
+        }
     </script>
 </body>
 

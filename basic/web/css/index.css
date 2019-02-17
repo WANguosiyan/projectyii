@@ -127,6 +127,9 @@
     padding-top: 105px;
     position: relative;
 }
+.curriculumSystem_boxx{
+    background-image: none;
+}
 .curriculumSystem{
  width: 1300px;
  height: auto;
@@ -219,6 +222,7 @@
     width: 1300px;
     margin: 0px auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .icon_box>div>div>div{
@@ -226,6 +230,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 .icon_box>div>div>div>img{
     width: 178px;
@@ -246,6 +251,10 @@
     background-image: url(../image/renwubg.png);
     height: 997px;
     overflow: hidden;
+}
+.selrenwu{
+    height: auto !important;
+    background-image:none;
 }
 .people_box>.renwu{
     background-color: rgba(000,000,000,0.7);
@@ -500,6 +509,143 @@
     font-size: 35px;
     color: #666;
 }
+.suggesBox{
+    position: absolute;
+    top: 227px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    background-color: rgba(000,000,000,0.8);
+    z-index: 3;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    padding: 20px 40px;
+}
+.suggesBox>form{
+    max-width: 790px;
+    min-width: 590px;
+    margin: 0px auto;
+    box-sizing: border-box;
+    padding: 0px 40px;
+    background-color: #fff;
+    padding-bottom:20px;
+    padding-top: 60px;
+}
+
+.suggesBox>form>.title_box{
+    margin: 18px 0px;
+    margin-bottom: 24px;
+}
+.suggesBox>form>.title_box>div{
+    width: 134px;
+    height: 60px;
+}
+.suggesBox>form>.title_box>div>.title{
+    width: 134px;
+    height: 60px;
+    font-size: 25px;
+    line-height: 60px;
+}
+.suggesBox>form>.title_box>div>img{
+    top: -56px;
+    width: 83px;
+}
+.suggesBox>form>.title_boxx{
+    padding-top: 0px;
+}
+.formSel{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.formSel>div{
+    width: 50%;
+    box-sizing: border-box;
+    padding-right: 20px;
+    position: relative;
+}
+.formSel>.allForm{
+    width: 100%
+}
+.formSel>div>p{
+    font-size: 16px;
+    color: rgb(103,35,120);
+    font-weight: bold;
+    height: 21px;
+    margin-bottom: 10px;
+}
+.formSel>div>input{
+    outline: none;
+    border:1px solid #b6b6b6;
+    width: 100%;
+    height: 25px;
+    box-sizing: border-box;
+    padding-left: 5px;
+    line-height: 25px;
+}
+.formSel>div>select{
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    box-sizing: border-box;
+    padding-left: 5px;
+    border:1px solid #b6b6b6;
+
+}
+.formSel>div>textarea{
+    width: 100%;
+    height: 83px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.moneySel{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.moneySel>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.moneySel>div>span{
+  font-size: 15px;
+  color: #333;
+  margin-left: 5px
+}
+.oneMoney{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(103,35,120);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #999;
+}
+.oneMoneyActive{
+    background-color: rgb(103,35,120);
+    border-Color:rgb(103,35,120);
+}
+.oneMoney>i{
+    display: block;
+       width: 8px;
+       height: 8px;
+       border-radius: 50%;
+       background-color: #fff; 
+}
+.formSel>div>b{
+    position: absolute;
+    bottom: 5px;
+    right: 25px;
+    color: #999;
+
+}
+.formSel>div>.rightMore{
+    right: 37px;
+}
+
 @media screen and (max-width:1300px) {
     .header{
         width: 1000px;
@@ -691,6 +837,9 @@
     }
     .connect_me_box>.content_box>div>.contenr{
         font-size: 30px;
+    }
+    .suggesBox{
+        top: 175px;
     }
 }
 @media screen and (max-width:1000px) {
@@ -1133,6 +1282,9 @@
     }
     .connect_me_box>.content_box>div>.contenr{
         font-size: 23px;
+    }
+    .suggesBox{
+        top: 147px;
     }
 }
 @media screen and (max-width:590px) {
