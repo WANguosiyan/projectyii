@@ -41,18 +41,141 @@ $this->params['breadcrumbs'] = [['label'=>'品牌方案','url'=>'?r=brandplan/de
                                        value="<?php echo isset($row['name']) ? $row['name'] : ''; ?>"/>
                             </div>
                         </div>
+                        <div class="form-group ">
+                            <label class="control-label col-md-3">
+                                方案图片
 
-                        <?php
-                        \app\backend\components\AppAsset::addEdit($this);
-                        ?>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">方案详情<span class="required"> * </span>
+                                <span class="required"> * </span>
                             </label>
-                            <div class="col-md-6">
-                                <script id="container" name="Brandplan[content]"
-                                        type="text/plain"><?php echo isset($row['content']) ? $row['content'] : ''; ?></script>
+                            <div class="col-md-9">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                         style="width: 360px; height: 180px;">
+                                        <?php if (isset($row['img']->img) && $row['img']->img): ?>
+                                            <img src="<?php echo $row['img']->img; ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div>
+                                    <span class="btn red btn-outline btn-file">
+                                        <span class="fileinput-new"> 选择图片 </span>
+                                        <span class="fileinput-exists"> 重选图片 </span>
+                                        <input type="file" name="Brandplan[img][img]"> </span>
+                                        <input type="hidden" name="Brandplan[img][img]" value="<?php echo isset($row['img']->img) ? $row['img']->img : ''; ?>">
+                                        </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists"
+                                           data-dismiss="fileinput"> 删除 </a>
+                                    </div>
+                                </div>
+<!--                                <div class="clearfix margin-top-10">-->
+<!--                                    <span class="label label-success">警告!</span> 图片预览仅仅支持 IE10+,-->
+<!--                                    FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+. 在较老的浏览器中只显示文件名.-->
+<!--                                </div>-->
                             </div>
                         </div>
+                        <div class="form-group ">
+                            <label class="control-label col-md-3">
+<!--                                方案图片-->
+<!---->
+<!--                                <span class="required"> * </span>-->
+                            </label>
+                            <div class="col-md-9">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                         style="width: 360px; height: 180px;">
+                                        <?php if (isset($row['img']->img1) && $row['img']->img1): ?>
+                                            <img src="<?php echo $row['img']->img1; ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div>
+                                    <span class="btn red btn-outline btn-file">
+                                        <span class="fileinput-new"> 选择图片 </span>
+                                        <span class="fileinput-exists"> 重选图片 </span>
+                                        <input type="file" name="Brandplan[img][img1]"> </span>
+                                        <input type="hidden" name="Brandplan[img][img1]" value="<?php echo isset($row['img']->img1) ? $row['img']->img1 : ''; ?>">
+                                        </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists"
+                                           data-dismiss="fileinput"> 删除 </a>
+                                    </div>
+                                </div>
+<!--                                <div class="clearfix margin-top-10">-->
+<!--                                    <span class="label label-success">警告!</span> 图片预览仅仅支持 IE10+,-->
+<!--                                    FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+. 在较老的浏览器中只显示文件名.-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="control-label col-md-3">
+<!--                                方案图片-->
+<!---->
+<!--                                <span class="required"> * </span>-->
+                            </label>
+                            <div class="col-md-9">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                         style="width: 360px; height: 180px;">
+                                        <?php if (isset($row['img']->img2) && $row['img']->img2): ?>
+                                            <img src="<?php echo $row['img']->img2; ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div>
+                                    <span class="btn red btn-outline btn-file">
+                                        <span class="fileinput-new"> 选择图片 </span>
+                                        <span class="fileinput-exists"> 重选图片 </span>
+                                        <input type="file" name="Brandplan[img][img2]"> </span>
+                                        <input type="hidden" name="Brandplan[img][img2]" value="<?php echo isset($row['img']->img2) ? $row['img']->img2 : ''; ?>">
+                                        </span>
+                                        <a href="javascript:;" class="btn red fileinput-exists"
+                                           data-dismiss="fileinput"> 删除 </a>
+                                    </div>
+                                </div>
+                                <div class="clearfix margin-top-10">
+                                    <span class="label label-success">警告!</span> 图片预览仅仅支持 IE10+,
+                                    FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+. 在较老的浏览器中只显示文件名.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                推荐理由
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" rows="10" cols="10"
+                                          name="Brandplan[recommend]"><?php echo isset($row['recommend']) ? $row['recommend'] : ''; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                品牌介绍
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" rows="10" cols="10"
+                                          name="Brandplan[introduce]"><?php echo isset($row['introduce']) ? $row['introduce'] : ''; ?></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                教学特色
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                <textarea class="form-control" rows="10" cols="10"
+                                          name="Brandplan[characteristic]"><?php echo isset($row['characteristic']) ? $row['characteristic'] : ''; ?></textarea>
+                            </div>
+                        </div>
+
+<!--                        --><?php
+//                        \app\backend\components\AppAsset::addEdit($this);
+//                        ?>
+<!--                        <div class="form-group">-->
+<!--                            <label class="control-label col-md-3">方案详情<span class="required"> * </span>-->
+<!--                            </label>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <script id="container" name="Brandplan[content]"-->
+<!--                                        type="text/plain">--><?php //echo isset($row['content']) ? $row['content'] : ''; ?><!--</script>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
 
                     </div>

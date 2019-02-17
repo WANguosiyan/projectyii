@@ -1,16 +1,15 @@
 <?php
 
-namespace app\backend\modules\brandplan\controllers;
+namespace app\backend\modules\enterprise\controllers;
 
 use app\models\Common;
-use app\models\TBrandplan;
+use app\models\TEnterprise;
 use yii\web\Controller;
 use app\backend\components\BaseController;
-
 /**
- * Default controller for the `brandplan` module
+ * Default controller for the `enterprise` module
  */
-class DefaultController extends BaseController
+class CompanyController extends BaseController
 {
     public function init()
     {
@@ -33,11 +32,11 @@ class DefaultController extends BaseController
      */
     public function actionIndex()
     {
-        $data = TBrandplan::find()->asArray()->one();
-        $data['img'] = json_decode($data['img']);
+        $data = TEnterprise::find()->asArray()->one();
+        $data['abstract_img'] = json_decode($data['abstract_img']);
         $this->data['row'] = $data;
-        return $this->render('index',$this->data);
 
+        return $this->render('index',$this->data);
     }
     /**
      * 编辑
@@ -45,31 +44,31 @@ class DefaultController extends BaseController
     public function actionUpdate(){
         $id = \Yii::$app->request->get('id');
         if($id){
-            $post = \Yii::$app->request->post('Brandplan');
-            $model = TBrandplan::findOne($id);
-            $model['img'] = json_decode($model['img']);
+            $post = \Yii::$app->request->post('Enterprise');
+            $model = TEnterprise::findOne($id);
+            $model['abstract_img'] = json_decode($model['abstract_img']);
 
-            foreach($post['img'] as $k=>$v){
+            foreach($post['abstract_img'] as $k=>$v){
 
                 if($k == 'img'){
-                    if (isset($v) && $v != $model['img']->img){//图片上传
-                        $post['img'][$k] = Common::common($v, 'logo');
+                    if (isset($v) && $v != $model['abstract_img']->img){//图片上传
+                        $post['abstract_img'][$k] = Common::common($v, 'logo');
                     }
                 }else{
-                    if (isset($v) && $v != $model['img']->$k){//图片上传
-                        $post['img'][$k] = Common::common($v, 'logo');
+                    if (isset($v) && $v != $model['abstract_img']->$k){//图片上传
+                        $post['abstract_img'][$k] = Common::common($v, 'logo');
                     }
                 }
 
-
             }
 
-            $post['img'] = json_encode( $post['img']);
+            $post['abstract_img'] = json_encode( $post['abstract_img']);
             $post['update_time'] = time();
             $model->attributes = $post;
             $submit = $model->save()?200:500;
             $this->refresh('&ref_sub='.$submit);
         }
-        $this->redirect('?r=brandplan/default/index');
+
+        $this->redirect('?r=enterprise/company/index');
     }
 }

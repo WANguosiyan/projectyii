@@ -36,16 +36,23 @@ class AppAdminAcl
                 [
                     'name'=>'企业信息',
                     'icon'=>'icon-wallet',
-                    'list_ctl'=>['default'],
+                    'list_ctl'=>['default','company'],
                     'act'=>[
                         'default'=>[
                             'name'=>'   企业信息',
                             'sidebar'=>true,
                             'default_id'=>'index',
-                            'list_act'=>['index'=>'商家列表','create'=>'新增商家','update'=>'编辑商家','delete'=>'删除商家']
+                            'list_act'=>['index'=>'列表','update'=>'编辑']
+                        ],
+                        'company'=>[
+                            'name'=>'   公司简介',
+                            'sidebar'=>true,
+                            'default_id'=>'index',
+                            'list_act'=>['index'=>'列表','update'=>'编辑']
                         ],
                     ],
                 ],
+
             ]
         ], 
         [

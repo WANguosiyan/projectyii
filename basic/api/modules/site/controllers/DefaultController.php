@@ -44,6 +44,11 @@ class DefaultController extends ApiController
             unset($data['id']);
             $data['qr_code'] = $data['qr_code']?Yii::$app->params['img_host'].$data['qr_code']:'';
             $data['logo'] = $data['logo']?Yii::$app->params['img_host'].$data['logo']:'';
+            $img = json_decode($data['abstract_img']);
+            $data['abstract_img'] = [];
+            foreach($img as $k=>$v){
+                $data['abstract_img'][] = $v;
+            }
 
         return ['code'=>self::$CODE_SUC,'msg'=>'获取数据成功','date'=>$data];
 
@@ -81,10 +86,11 @@ class DefaultController extends ApiController
     {
         if(!Yii::$app->request->isPost) return ['code'=>self::$CODE_ERR,'msg'=>'请求方式错误'];
         $data = TBrandplan::find()->asArray()->one();
-//        foreach($data as $k=>$v){
-//            $data[$k]['cover_img'] = $v['cover_img']?Yii::$app->params['img_host'].$v['cover_img']:'';
-//
-//        }
+        $img = json_decode($data['img']);
+        $data['img'] = [];
+        foreach($img as $k=>$v){
+            $data['img'][] = $v;
+        }
         return ['code'=>self::$CODE_SUC,'msg'=>'获取数据成功','date'=>$data];
     }
     /**

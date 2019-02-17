@@ -35,7 +35,7 @@ class TEnterprise extends \yii\db\ActiveRecord
         return [
             [['abstract'], 'string'],
             [['create_time', 'update_time'], 'integer'],
-            [['name', 'address', 'email', 'tel', 'linkman','logo','qr_code','copyright'], 'string', 'max' => 255],
+            [['name', 'address', 'email', 'tel', 'linkman','logo','qr_code','copyright','abstract_img'], 'string', 'max' => 255],
         ];
     }
 
@@ -56,7 +56,8 @@ class TEnterprise extends \yii\db\ActiveRecord
             'linkman' => 'Linkman',
             'logo' => 'logo',
             'qr_code'=>'Qr code',
-            'copyright'=>'Copyright'
+            'copyright'=>'Copyright',
+            'abstract_img'=>'Abstract img'
         ];
     }
 }

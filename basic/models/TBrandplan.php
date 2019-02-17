@@ -29,9 +29,9 @@ class TBrandplan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content'], 'string'],
+            [['content','recommend','introduce','characteristic'], 'string'],
             [['create_time', 'update_time'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['name','img'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,6 +46,10 @@ class TBrandplan extends \yii\db\ActiveRecord
             'content' => 'Content',
             'create_time' => 'Create Time',
             'update_time' => 'Update Time',
+            'recommend'=>'Recommend',
+            'introduce'=>'introduce',
+            'characteristic'=>'characteristic',
+            'img'=>'Img'
         ];
     }
 }

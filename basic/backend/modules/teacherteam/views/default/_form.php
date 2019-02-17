@@ -46,18 +46,27 @@
             </div>
         </div>
     </div>
-    <?php
-    \app\backend\components\AppAsset::addEdit($this);
-    ?>
+<!--    --><?php
+//    \app\backend\components\AppAsset::addEdit($this);
+//    ?>
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-md-3">简介<span class="required"> * </span>-->
+<!--        </label>-->
+<!--        <div class="col-md-6">-->
+<!--            <script id="container" name="Teacherteam[content]"-->
+<!--                    type="text/plain">--><?php //echo isset($row['content']) ? $row['content'] : ''; ?><!--</script>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="form-group">
-        <label class="control-label col-md-3">简介<span class="required"> * </span>
+        <label class="col-md-3 control-label">
+            简介
+            <span class="required"> * </span>
         </label>
-        <div class="col-md-6">
-            <script id="container" name="Teacherteam[content]"
-                    type="text/plain"><?php echo isset($row['content']) ? $row['content'] : ''; ?></script>
+        <div class="col-md-8">
+                                <textarea class="form-control" rows="10" cols="10"
+                                          name="Teacherteam[content]"><?php echo isset($row['content']) ? $row['content'] : ''; ?></textarea>
         </div>
     </div>
-
     <div class="form-body">
         <div class="form-group">
             <label class="control-label col-md-3">排序
